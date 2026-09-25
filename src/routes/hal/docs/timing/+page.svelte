@@ -77,7 +77,7 @@ blinker.start(() => {
 	<MethodDoc name="busyWaitUs" signature="Time.busyWaitUs(us): void">
 		<p>
 			For sub-millisecond protocol timing where waiting would break the waveform. This is the only
-			<code>Time</code> call that never yields — do not use it for long waits; it holds the CPU.
+			<code>Time</code> call that never yields — don't use it for long waits; it holds the CPU.
 		</p>
 	</MethodDoc>
 
@@ -93,7 +93,7 @@ blinker.start(() => {
 		<code>Time.nowUs()</code> is uptime-derived on every board, so its resolution is the uptime
 		tick — one millisecond. For sub-millisecond <em>deterministic</em> timing use the
 		<a href="/hal/docs/on-chip-peripherals" class="font-bold text-primary underline">hardware Counter</a>
-		— it fires from interrupt context and does not depend on any thread.
+		— it fires from interrupt context and doesn't depend on any thread.
 	</Callout>
 
 	<h3 class="mt-6 text-sm font-bold uppercase tracking-widest">Periodic work</h3>

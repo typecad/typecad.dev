@@ -183,8 +183,8 @@ const lab    = new Request(Request.GET, 'https://lab-server.local', { insecure: 
 	<h3 class="mt-6 text-sm font-bold uppercase tracking-widest">HTTPS and certificate pinning</h3>
 	<p class="text-sm leading-relaxed">
 		HTTPS is native; the CA policy is a construction fact. <code>caCert</code> pins a specific CA
-		(a PEM string — it is converted to binary form at build time, so no PEM parser ships on the
-		board). <code>insecure: true</code> encrypts but skips verification; do not ship it in
+		(a PEM string — it's converted to binary form at build time, so no PEM parser ships on the
+		board). <code>insecure: true</code> encrypts but skips verification; don't ship it in
 		production.
 	</p>
 	<CodeBlock code={httpsExample} label="https.ts" class="mt-3" />

@@ -19,7 +19,7 @@ The two tools are two halves of the same workflow: design the board with `typeCA
 
 ## Get started
 
-If you are new, start with the [pcb getting started guide](/pcb/docs/getting-started) or the [hal getting started guide](/hal/docs/getting-started). If you have questions or find a doc that needs work, open an issue on [github.com/typecad](https://github.com/typecad).
+If you're new, start with the [pcb getting started guide](/pcb/docs/getting-started) or the [hal getting started guide](/hal/docs/getting-started). If you have questions or find a doc that needs work, open an issue on [github.com/typecad](https://github.com/typecad).
 
 ```
 npm create typecad@latest

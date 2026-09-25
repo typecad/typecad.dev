@@ -123,7 +123,7 @@ const dev = I2C0.device(0x44);      // register verbs callable immediately`;
 <ApiCard
 	name="rawCpp / rawCppExpr"
 	kind="directive"
-	purpose="Inject raw C++ at the call site — for features the HAL does not cover, such as mDNS or OTA."
+	purpose="Inject raw C++ at the call site — for features the HAL doesn't cover, such as mDNS or OTA."
 	imports={"import { rawCpp } from '@typecad/hal'"}>
 	{#snippet example()}
 		<CodeBlock code={rawCpp} label="raw-cpp.ts" />

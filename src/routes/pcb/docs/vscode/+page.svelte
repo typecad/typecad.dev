@@ -189,8 +189,8 @@ typecad-pcb simulate    # solves the operating point → build/<board>_op.json
 <ApiCard
 	name="ngspice view"
 	kind="feature"
-	purpose="The electrical view: white paper, near-black traces, semi-transparent components. It
-		comes alive after `typecad-pcb simulate` solves the DC operating point and leaves
+	purpose="The electrical view: white paper, near-black traces, semi-transparent components. The
+		data lands after `typecad-pcb simulate` solves the DC operating point and leaves
 		`build/<board>_op.json` beside the netlist — the viewer picks it up like a DRC report."
 	imports={"typecad-pcb simulate"}>
 	{#snippet example()}

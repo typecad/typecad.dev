@@ -116,6 +116,6 @@ mqtt.disconnect();   // disconnect and free the client`;
 </ApiCard>
 
 <Callout label="Note">
-	mDNS and OTA are not available on Zephyr. For those, use the Zephyr APIs directly via
+	mDNS and OTA aren't available on Zephyr. For those, use the Zephyr APIs directly via
 	<code>rawCpp()</code>.
 </Callout>

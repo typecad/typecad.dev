@@ -54,7 +54,7 @@ wdt.feed();                        // keep it alive`;
 <p class="mt-3 text-sm leading-relaxed">
 	Periodic software work belongs to a <code>Thread</code> — a kernel thread that sleeps between
 	rounds. Use the hardware counter when you need deterministic, sub-millisecond periodic execution
-	that does not depend on any thread.
+	that doesn't depend on any thread.
 </p>
 
 <ApiCard
@@ -67,7 +67,7 @@ wdt.feed();                        // keep it alive`;
 	{/snippet}
 	<Callout>
 		The instance index selects one of the chip's declared free counters — instance 0 is the first
-		(for example RTC1 on the nRF52840). Using an index the chip does not have is a build error that
+		(for example RTC1 on the nRF52840). Using an index the chip doesn't have is a build error that
 		names the available counters.
 	</Callout>
 	<MethodDoc name="onAlarm" signature="onAlarm(fn): Counter">
@@ -93,9 +93,9 @@ wdt.feed();                        // keep it alive`;
 	<DocsTable headers={['Member', 'Description']} rows={watchdogMethods} monoCols={[0]} />
 </ApiCard>
 
-<h2 class="mt-12 text-2xl font-bold tracking-tight">What is not here</h2>
+<h2 class="mt-12 text-2xl font-bold tracking-tight">What isn't here</h2>
 <p class="mt-2 text-sm leading-relaxed text-muted-foreground">
-	Capacitive-touch GPIOs and the on-die temperature sensor are not supported — there is no stable
+	Capacitive-touch GPIOs and the on-die temperature sensor aren't supported — there is no stable
 	driver surface for either on the supported chips. Touch <em>display
 	controllers</em> (FT6336U and friends) are a separate feature; temperature sensing is covered by
 	the <a href="/hal/docs/sensors" class="font-bold text-primary underline">sensor catalog</a> (a

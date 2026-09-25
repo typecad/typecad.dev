@@ -106,7 +106,7 @@ const id = display.readReg(0x00);                    // one-byte register read`;
 	kind="start here"
 	purpose="Every bus the board has is exported, ready to use — numbered by instance when the board
 		has more than one: UART0 and UART1, I2C0 and I2C1, SPI0 and SPI1, USB0. A board without a bus
-		does not export its name — using it is a build error at import, not a runtime surprise."
+		doesn't export its name — using it is a build error at import, not a runtime surprise."
 	imports={"import { UART0, I2C0, SPI0 } from '@typecad/hal'"}>
 	{#snippet example()}
 		<CodeBlock code={singletons} label="singletons.ts" />
@@ -126,7 +126,7 @@ const id = display.readReg(0x00);                    // one-byte register read`;
 	<Callout>
 		The address is the <strong>7-bit form</strong> (<code>0x44</code>) — never the left-shifted
 		8-bit form. To attach a managed sensor driver, pass the same handle to
-		<code>new Sensor(...)</code>; register-level access is for parts the catalog does not cover.
+		<code>new Sensor(...)</code>; register-level access is for parts the catalog doesn't cover.
 	</Callout>
 	<h3 class="mt-6 text-sm font-bold uppercase tracking-widest">All methods</h3>
 	<DocsTable headers={['Member', 'Description']} rows={i2cMethods} monoCols={[0]} />

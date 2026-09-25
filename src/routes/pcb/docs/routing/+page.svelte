@@ -104,7 +104,7 @@ pcb.create(power_track);`;
 <ApiCard
 	name="TrackBuilder"
 	purpose="Fluent API for manual tracks — go point to point, using vias to transition between
-		layers. Nets and connections are not required: KiCAD connects any track that touches an
+		layers. Nets and connections aren't required: KiCAD connects any track that touches an
 		element with a net."
 	imports={"import { TrackBuilder } from '@typecad/pcb'"}>
 	{#snippet example()}

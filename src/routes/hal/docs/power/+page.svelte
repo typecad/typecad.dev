@@ -49,13 +49,13 @@ Power.offFor(60_000);   // soft-off; the RTC wakes the board in one minute
 	name="Power"
 	kind="singleton"
 	purpose="The power-state surface. off() enters the deepest declared power state — deep
-		sleep / soft-off — via sys_poweroff(). The call does not return."
+		sleep / soft-off — via sys_poweroff(). The call doesn't return."
 	imports={"import { Power } from '@typecad/hal'"}>
 	{#snippet example()}
 		<CodeBlock code={off} label="power-down.ts" />
 	{/snippet}
 	<p class="text-sm leading-relaxed">
-		Expect the console to go silent — <strong>that silence is the effect</strong>. RAM is not
+		Expect the console to go silent — <strong>that silence is the effect</strong>. RAM isn't
 		retained; there is no resuming the program after <code>off()</code>.
 	</p>
 
@@ -81,7 +81,7 @@ Power.offFor(60_000);   // soft-off; the RTC wakes the board in one minute
 	name="offFor — the battery cycle"
 	kind="method"
 	purpose="Sleep for a duration: offFor(ms) arms the SoC's RTC wake timer, then enters soft-off.
-		The board reboots on wake (RAM is not retained), so the semantics are 'sleep for N ms, then
+		The board reboots on wake (RAM isn't retained), so the semantics are 'sleep for N ms, then
 		run from the top' — the shape of every battery-powered sensor."
 	imports={"Power.offFor(60_000)"}>
 	{#snippet example()}

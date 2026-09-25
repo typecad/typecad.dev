@@ -60,7 +60,7 @@ typecad.named('SCL').net(microcontroller.PB1, sensor.SCL);`;
 		params={[
 			{ name: 'name', type: 'string', description: 'The net name, visible in KiCAD. Some typeCAD utility functions only pay attention to named connections.' }
 		]}>
-		<p>Sometimes it is useful to name the connection — it shows in KiCAD and helps when laying out the board. Unnamed connections become <code>net#</code>.</p>
+		<p>Sometimes it's useful to name the connection — it shows in KiCAD and helps when laying out the board. Unnamed connections become <code>net#</code>.</p>
 		<CodeBlock code={namedExample} label="named.ts" class="mt-3" />
 	</MethodDoc>
 

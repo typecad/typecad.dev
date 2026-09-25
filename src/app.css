@@ -161,6 +161,9 @@ mark.search-hit {
 .article pre {
 	@apply my-4 overflow-x-auto bg-zinc-950 p-4 text-xs text-zinc-100;
 }
+.article img {
+	@apply my-6 w-full rounded-lg border border-border shadow-sm;
+}
 .article code {
 	@apply bg-muted px-1 py-0.5 text-sm;
 }

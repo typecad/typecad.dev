@@ -8,13 +8,13 @@
 			icon: Cpu,
 			title: 'Pins and ports as code',
 			description:
-				'Each pin, bus, and part is a TypeScript object. The HAL checks you are using them the right way — mistakes show up in your editor, not on the board.'
+				'Each pin, bus, and part is a TypeScript object. The HAL checks you\'re using them the right way — mistakes show up in your editor, not on the board.'
 		},
 		{
 			icon: Braces,
 			title: 'TypeScript becomes C++',
 			description:
-				'You write TypeScript and get clean, fast C++ firmware — nothing extra slowing it down.'
+				'You write TypeScript and get the C++ you\'d have written by hand — nothing extra slowing it down.'
 		},
 		{
 			icon: FlaskConical,
