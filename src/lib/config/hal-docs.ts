@@ -164,6 +164,11 @@ export const HAL_DOC_GROUPS: HalDocGroup[] = [
 				slug: 'cli',
 				title: 'The CLI',
 				blurb: 'Every typecad-hal command and its flags'
+			},
+			{
+				slug: 'vscode',
+				title: 'The VS Code extension',
+				blurb: 'Board-aware diagnostics, hovers, quick-fixes, fact chips, and Flash & Monitor — vendored into every project'
 			}
 		]
 	},
@@ -174,6 +179,11 @@ export const HAL_DOC_GROUPS: HalDocGroup[] = [
 				slug: 'testing',
 				title: 'Testing & Diagnostics',
 				blurb: 'Hardware tests with the expect API, role pins, and source-mapped errors'
+			},
+			{
+				slug: 'tracing',
+				title: 'Runtime Tracing',
+				blurb: 'CPU load, stack high-water and frame times — sampled on the board, gated in CI, asserted in tests'
 			},
 			{
 				slug: 'simulation',

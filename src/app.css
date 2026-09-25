@@ -1,0 +1,185 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+/* typecad.dev design system: neo-brutalist (from Cuttlefish) sitewide —
+   hard offset shadows, square corners, JetBrains Mono everywhere.
+   Product themes only change surface + accent, scoped via .theme-pcb/.theme-hal */
+:root {
+	--background: oklch(0.9079 0 0);
+	--foreground: oklch(0.1579 0 0);
+	--card: oklch(0.9554 0 0);
+	--card-foreground: oklch(0.1579 0 0);
+	--popover: oklch(0.9554 0 0);
+	--popover-foreground: oklch(0.1579 0 0);
+	--primary: oklch(0.4463 0.1678 27.4784);
+	--primary-foreground: oklch(1 0 0);
+	--secondary: oklch(0.3705 0 0);
+	--secondary-foreground: oklch(0.9619 0 0);
+	--muted: oklch(0.8452 0 0);
+	--muted-foreground: oklch(0.4184 0 0);
+	--accent: oklch(0.476 0.159 25.6357);
+	--accent-foreground: oklch(1 0 0);
+	--destructive: oklch(0.405 0.1551 27.811);
+	--destructive-foreground: oklch(1 0 0);
+	--border: oklch(0.1579 0 0);
+	--input: oklch(0.861 0 0);
+	--ring: oklch(0.4463 0.1678 27.4784);
+	--font-sans: 'JetBrains Mono', ui-monospace, monospace;
+	--font-serif: 'JetBrains Mono', ui-monospace, monospace;
+	--font-mono: 'JetBrains Mono', ui-monospace, monospace;
+	--radius: 0rem;
+	--shadow-2xs: 3px 3px 0px 0px hsl(0 0% 0% / 0.5);
+	--shadow-xs: 3px 3px 0px 0px hsl(0 0% 0% / 0.5);
+	--shadow-sm: 3px 3px 0px 0px hsl(0 0% 0% / 1), 3px 1px 2px -1px hsl(0 0% 0% / 1);
+	--shadow: 3px 3px 0px 0px hsl(0 0% 0% / 1), 3px 1px 2px -1px hsl(0 0% 0% / 1);
+	--shadow-md: 3px 3px 0px 0px hsl(0 0% 0% / 1), 3px 2px 4px -1px hsl(0 0% 0% / 1);
+	--shadow-lg: 3px 3px 0px 0px hsl(0 0% 0% / 1), 3px 4px 6px -1px hsl(0 0% 0% / 1);
+	--shadow-xl: 3px 3px 0px 0px hsl(0 0% 0% / 1), 3px 8px 10px -1px hsl(0 0% 0% / 1);
+	--tracking-normal: -0.01em;
+	--spacing: 0.25rem;
+}
+
+/* typeCAD/pcb: dark surface + green accent (green-400 family) */
+.theme-pcb {
+	--background: oklch(0.145 0 0);
+	--foreground: oklch(0.9554 0 0);
+	--card: oklch(0.1876 0 0);
+	--card-foreground: oklch(0.9554 0 0);
+	--popover: oklch(0.1876 0 0);
+	--popover-foreground: oklch(0.9554 0 0);
+	--primary: oklch(0.7919 0.2124 148.45);
+	--primary-foreground: oklch(0.145 0 0);
+	--secondary: oklch(0.2446 0 0);
+	--secondary-foreground: oklch(0.9554 0 0);
+	--muted: oklch(0.2213 0 0);
+	--muted-foreground: oklch(0.7757 0 0);
+	--accent: oklch(0.7476 0.1998 149.43);
+	--accent-foreground: oklch(0.145 0 0);
+	--border: oklch(0.9554 0 0);
+	--input: oklch(0.2446 0 0);
+	--ring: oklch(0.7919 0.2124 148.45);
+}
+
+/* Cuttlefish/hal: light surface + red accent (inherits :root tokens);
+   declared for explicitness and future divergence */
+.theme-hal {
+	--background: oklch(0.9079 0 0);
+	--foreground: oklch(0.1579 0 0);
+	--primary: oklch(0.4463 0.1678 27.4784);
+	--primary-foreground: oklch(1 0 0);
+	--border: oklch(0.1579 0 0);
+}
+
+@theme inline {
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-card: var(--card);
+	--color-card-foreground: var(--card-foreground);
+	--color-popover: var(--popover);
+	--color-popover-foreground: var(--popover-foreground);
+	--color-primary: var(--primary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-secondary: var(--secondary);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-muted: var(--muted);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-accent: var(--accent);
+	--color-accent-foreground: var(--accent-foreground);
+	--color-destructive: var(--destructive);
+	--color-destructive-foreground: var(--destructive-foreground);
+	--color-border: var(--border);
+	--color-input: var(--input);
+	--color-ring: var(--ring);
+	--font-sans: var(--font-sans);
+	--font-mono: var(--font-mono);
+	--radius-sm: calc(var(--radius) - 4px);
+	--radius-md: calc(var(--radius) - 2px);
+	--radius-lg: var(--radius);
+	--radius-xl: calc(var(--radius) + 4px);
+	--shadow-2xs: var(--shadow-2xs);
+	--shadow-xs: var(--shadow-xs);
+	--shadow-sm: var(--shadow-sm);
+	--shadow: var(--shadow);
+	--shadow-md: var(--shadow-md);
+	--shadow-lg: var(--shadow-lg);
+	--shadow-xl: var(--shadow-xl);
+}
+
+/* Tailwind v4's container only sets breakpoint max-widths — center it and
+   give it a gutter like the v3 default people expect */
+@utility container {
+	width: 100%;
+	margin-inline: auto;
+	padding-inline: 1.5rem;
+	@media (min-width: 40rem) { max-width: 40rem; }
+	@media (min-width: 48rem) { max-width: 48rem; }
+	@media (min-width: 64rem) { max-width: 64rem; }
+	@media (min-width: 80rem) { max-width: 80rem; }
+	@media (min-width: 96rem) { max-width: 96rem; }
+}
+
+@layer base {
+	* {
+		@apply border-border;
+	}
+	body {
+		@apply bg-background text-foreground font-sans;
+	}
+}
+
+/* first-match highlight when arriving from search (?q= deep link) */
+mark.search-hit {
+	background: oklch(0.9 0.15 100);
+	color: oklch(0.18 0 0);
+	padding: 0 0.15em;
+}
+
+/* news article body (markdown) */
+.article {
+	line-height: 1.7;
+}
+.article h2 {
+	@apply mt-8 mb-3 text-2xl font-bold tracking-tight;
+}
+.article h3 {
+	@apply mt-6 mb-2 text-xl font-bold tracking-tight;
+}
+.article p {
+	@apply my-4;
+}
+.article a {
+	@apply font-bold text-primary underline;
+}
+.article ul {
+	@apply my-4 ml-6 list-disc space-y-1;
+}
+.article ol {
+	@apply my-4 ml-6 list-decimal space-y-1;
+}
+.article pre {
+	@apply my-4 overflow-x-auto bg-zinc-950 p-4 text-xs text-zinc-100;
+}
+.article code {
+	@apply bg-muted px-1 py-0.5 text-sm;
+}
+.article pre code {
+	@apply bg-transparent p-0 text-xs;
+}
+.article blockquote {
+	@apply my-4 border-l-4 border-foreground/30 pl-4 italic;
+}
+.article hr {
+	@apply my-8 border-foreground/30;
+}
+.article img {
+	@apply my-4 max-w-full;
+}
+.article table {
+	@apply my-4 w-full border-collapse text-xs;
+}
+.article th,
+.article td {
+	@apply border border-foreground/30 px-2 py-1.5 text-left;
+}
