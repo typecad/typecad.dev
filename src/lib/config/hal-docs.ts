@@ -18,7 +18,7 @@ export const HAL_DOC_GROUPS: HalDocGroup[] = [
 			{
 				slug: 'getting-started',
 				title: 'Getting started',
-				blurb: 'Requirements, the Zephyr toolchain, creating a project, VSCode'
+				blurb: 'Requirements, creating a project, compiling and uploading'
 			}
 		]
 	},

@@ -6,7 +6,7 @@
 	import { buttonVariants } from '$lib/components/ui/button/index.js';
 	import { ArrowRight } from '@lucide/svelte';
 
-	const install = `npx typecad-pcb create   # the extension lands in hw/.vscode/extensions/
+	const install = `npx @typecad/pcb create   # the extension lands in hw/.vscode/extensions/
 code typecad_project.code-workspace`;
 
 	const hoverFacts = [

@@ -10,9 +10,9 @@
 	const example = getWorkspaceExample('first-board');
 	if (!example) error(404, 'Example not found');
 
-	const create = `npx typecad-pcb create`;
+	const create = `npx @typecad/pcb create`;
 	const build = `cd my-project/hw
-typecad-pcb build`;
+npx @typecad/pcb build`;
 	const output = `build/
   first_board.kicad_pcb
   first_board.kicad_sch

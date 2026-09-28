@@ -7,11 +7,11 @@
 	import { buttonVariants } from '$lib/components/ui/button/index.js';
 	import { ArrowRight } from '@lucide/svelte';
 
-	const createProject = `npx typecad-pcb create`;
-	const createFlags = `npx typecad-pcb create --name=typecad_project --git=false --hal=false`;
-	const build = `typecad-pcb build`;
-	const addComponent = `typecad-pcb add component`;
-	const doctor = `typecad-pcb doctor`;
+	const createProject = `npx @typecad/pcb create`;
+	const createFlags = `npx @typecad/pcb create --name=typecad_project --git=false --hal=false`;
+	const build = `npx @typecad/pcb build`;
+	const addComponent = `npx @typecad/pcb add component`;
+	const doctor = `npx @typecad/pcb doctor`;
 
 	const requirements = [
 		['KiCAD', 'version 10.0 — required', 'kicad.org'],
@@ -71,7 +71,7 @@
 	{/snippet}
 		<Callout>
 			<code>git</code> must be in your PATH — typeCAD optionally uses it in its tooling. Run
-			<code>typecad-pcb doctor</code> at any time to verify the whole environment; use
+			<code>npx @typecad/pcb doctor</code> at any time to verify the whole environment; use
 			<code>--fix</code> to attempt automatic fixes.
 		</Callout>
 </ApiCard>
@@ -82,16 +82,17 @@
 		purpose="One command scaffolds a project. You'll be prompted for the project name, whether to
 			also scaffold a typeCAD/hal firmware project (and its board target), whether to create a
 			git repository, and which optional utility packages to install."
-	imports={"npm install -g @typecad/pcb"}>
+	imports={"npx @typecad/pcb create"}>
 	{#snippet example()}
 		<CodeBlock code={createProject} label="terminal" />
 	{/snippet}
 	<p class="text-sm leading-relaxed">
-		The project is created in the current directory, including a VSCode workspace file — open it
+		No install step — <code>npx</code> fetches the package and scaffolds the project. The project
+		is created in the current directory, including a VSCode workspace file — open it
 		and the project comes up ready to work. All the prompts can also be passed as flags:
 	</p>
 	<CodeBlock code={createFlags} label="non-interactive" class="mt-3" />
-	<MethodDoc name="--help" signature="typecad-pcb create --help">
+	<MethodDoc name="--help" signature="npx @typecad/pcb create --help">
 		<p>Lists every parameter for scripted project creation.</p>
 	</MethodDoc>
 </ApiCard>
@@ -102,7 +103,7 @@
 	purpose="Builds the project: runs the TypeScript entry file and generates the KiCAD outputs into
 		./build/. Run it from the hw/ directory, or click the build script in VSCode's NPM Scripts
 		sidebar."
-	imports={"typecad-pcb build"}>
+	imports={"npx @typecad/pcb build"}>
 	{#snippet example()}
 		<CodeBlock code={build} label="terminal" />
 	{/snippet}
