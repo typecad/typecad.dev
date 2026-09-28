@@ -41,7 +41,7 @@ mqtt.disconnect();   // disconnect and free the client`;
 		['subscribe(topic)', 'Subscribe to a topic filter (supports # / + wildcards)'],
 		['publish(topic, data)', 'Publish a message (QoS 1)'],
 		['linked()', 'true while the broker session is up'],
-		['close()', 'Disconnect and free the client']
+		['disconnect()', 'Disconnect and free the client']
 	];
 </script>
 
@@ -99,10 +99,9 @@ mqtt.disconnect();   // disconnect and free the client`;
 				copy what you need inside the handler.
 			</li>
 			<li>
-				<strong>mqtts://</strong> is encrypted but the broker's identity is <strong>not
-				verified</strong> (there is no CA-pinning fact on this class yet — the analogue of
-				<code>Request</code>'s <code>caCert</code>). Treat it as encrypted-but-unverified until
-				that lands.
+				<strong>mqtts://</strong> is verified TLS when you pin the broker's CA with
+				<code>opts.caCert</code> (the same PEM fact <code>Request</code> takes); without it the
+				session is encrypted but the broker's identity is unverified.
 			</li>
 			<li>
 				<strong>Targets</strong>: needs a networked target — a board with no WiFi radio is a build

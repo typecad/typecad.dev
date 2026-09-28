@@ -8,18 +8,18 @@
 let typecad = new PCB('typecad');
 typecad.create();`;
 
-	const kicadFlow = [
-		['1', 'Create a project with a schematic and board'],
-		['2', 'Add components'],
-		['3', 'Make connections'],
-		['4', 'Layout the board']
-	];
-
 	const typecadFlow = [
 		['1', 'Create a typeCAD project'],
 		['2', 'Edit the code to add components and make connections'],
 		['3', 'Build it'],
-		['4', 'Open the board in KiCAD for the final visual layout pass']
+		['4', 'Open the board in the VS Code board viewer']
+	];
+
+	const viewerFlow = [
+		['1', 'View Board renders the built board — no KiCAD needed'],
+		['2', 'Search a designator, click copper to highlight a net'],
+		['3', 'Switch to Layout and drag parts, draw traces'],
+		['4', 'Apply writes the session back to your TypeScript']
 	];
 </script>
 
@@ -34,8 +34,8 @@ typecad.create();`;
 <h1 class="mt-3 text-4xl font-bold tracking-tight">🧰 typeCAD/pcb reference</h1>
 <p class="mt-3 leading-relaxed text-muted-foreground">
 	Instead of using the KiCAD schematic editor, you write TypeScript code and build it into a KiCAD
-	project. typeCAD replaces steps 1–3 of the KiCAD flow — placing components and making connections
-	happens in code, not by clicking and dragging.
+	project — placing components and making connections happens in code, not by clicking and
+	dragging.
 </p>
 
 <h2 class="mt-10 text-2xl font-bold tracking-tight">The smallest board</h2>
@@ -45,20 +45,12 @@ typecad.create();`;
 <p class="mt-3 text-sm leading-relaxed">
 	That creates a KiCAD board file, schematic file, netlist, and BOM in <code>./build/</code> —
 	<code>typecad.kicad_pcb</code>, <code>typecad.kicad_sch</code>, <code>typecad.net</code>, and
-	<code>typecad.csv</code>. Run <code>typecad build</code> from your project's <code>hw/</code>
+	<code>typecad.csv</code>. Run <code>typecad-pcb build</code> from your project's <code>hw/</code>
 	directory to build; a <code>typecad.conf.ts</code> file there configures it.
 </p>
 
 <h2 class="mt-10 text-2xl font-bold tracking-tight">The flow</h2>
 <div class="mt-4 grid grid-cols-1 gap-6 sm:grid-cols-2">
-	<div class="border-2 border-foreground bg-card p-4 shadow-sm">
-		<p class="text-xs font-bold uppercase tracking-widest text-muted-foreground">KiCAD</p>
-		<ol class="ml-4 mt-2 list-decimal space-y-1 text-sm">
-			{#each kicadFlow as [n, step] (n)}
-				<li>{step}</li>
-			{/each}
-		</ol>
-	</div>
 	<div class="border-2 border-foreground bg-card p-4 shadow-sm">
 		<p class="text-xs font-bold uppercase tracking-widest text-muted-foreground">typeCAD</p>
 		<ol class="ml-4 mt-2 list-decimal space-y-1 text-sm">
@@ -67,12 +59,24 @@ typecad.create();`;
 			{/each}
 		</ol>
 	</div>
+	<div class="border-2 border-foreground bg-card p-4 shadow-sm">
+		<p class="text-xs font-bold uppercase tracking-widest text-muted-foreground">
+			Board viewer
+		</p>
+		<ol class="ml-4 mt-2 list-decimal space-y-1 text-sm">
+			{#each viewerFlow as [n, step] (n)}
+				<li>{step}</li>
+			{/each}
+		</ol>
+	</div>
 </div>
 <p class="mt-4 text-sm leading-relaxed">
 	Design rules (minimum clearances, track/via dimensions) default to the JLCPCB no-surcharge
 	standard and are written to the project file for DRC — see
-	<a href="/pcb/docs/board-layout" class="font-bold text-primary underline">Board Layout</a>. You
-	only need to open KiCAD for the final visual layout pass.
+	<a href="/pcb/docs/board-layout" class="font-bold text-primary underline">Board Layout</a>. The
+	whole flow stays in VS Code — the board viewer is part of the
+	<a href="/pcb/docs/vscode" class="font-bold text-primary underline">typeCAD extension</a>, and
+	KiCAD works for the visual pass too if you'd rather use it.
 </p>
 
 <h2 class="mt-12 text-2xl font-bold tracking-tight">Areas</h2>

@@ -14,7 +14,8 @@
 				'git for meaningful version control and CI/CD',
 				'npm to install, update, and publish designs'
 			],
-			cta: 'Build a board'
+			cta: 'Build a board',
+			ctaHref: '/pcb/docs/getting-started'
 		},
 		{
 			href: '/hal',
@@ -28,37 +29,45 @@
 				'Tests execute on real hardware from one command'
 			],
 			cta: 'Write firmware',
-			// right half carries the nav in its own header strip
-			headerSlot: 'nav'
+			ctaHref: '/hal/docs/getting-started'
 		}
 	];
 </script>
 
-<div class="flex flex-1 flex-col md:flex-row">
+<div class="relative flex flex-1 flex-col md:flex-row">
+	<!-- nav sits above both halves: a row at the top on mobile, pinned to the
+	     top-right (over the hal half) on desktop so it never lands mid-page -->
+	<nav
+		class="relative z-20 flex justify-center gap-1 px-6 pt-4 text-sm font-medium md:absolute md:right-6 md:top-4 md:justify-end md:px-0 md:pt-0">
+		<a
+			href="/pcb"
+			class="border-2 border-transparent px-3 py-1.5 transition-colors hover:border-foreground">
+			pcb
+		</a>
+		<a
+			href="/hal"
+			class="border-2 border-transparent px-3 py-1.5 transition-colors hover:border-foreground">
+			hal
+		</a>
+		<a
+			href="/news"
+			class="border-2 border-transparent px-3 py-1.5 transition-colors hover:border-foreground">
+			news
+		</a>
+		<a
+			href="https://github.com/typecad"
+			target="_blank"
+			rel="noreferrer"
+			class="border-2 border-transparent px-3 py-1.5 transition-colors hover:border-foreground">
+			github
+		</a>
+	</nav>
+
 	{#each HALVES as half (half.href)}
 		<div
 			class="{half.theme} group relative flex flex-1 flex-col border-foreground bg-background px-6 pb-16 pt-4 text-foreground text-center transition-[flex-grow] duration-200 md:min-h-[calc(100vh-5rem)] md:border-r-2 md:last:border-r-0 md:hover:grow-[1.1]">
 			<!-- stretched link: the whole half is clickable -->
 			<a href={half.href} aria-label={half.name} class="absolute inset-0 z-10"></a>
-
-			{#if half.headerSlot === 'nav'}
-				<nav class="relative z-20 mb-auto flex self-end gap-1 text-sm font-medium">
-					<span class="border-2 border-transparent px-3 py-1.5 opacity-60">pcb</span>
-					<span class="border-2 border-foreground px-3 py-1.5">hal</span>
-					<a
-						href="/news"
-						class="border-2 border-transparent px-3 py-1.5 transition-colors hover:border-foreground">
-						news
-					</a>
-					<a
-						href="https://github.com/typecad"
-						target="_blank"
-						rel="noreferrer"
-						class="border-2 border-transparent px-3 py-1.5 transition-colors hover:border-foreground">
-						github
-					</a>
-				</nav>
-			{/if}
 
 			<div class="relative mt-10 flex flex-1 flex-col items-center gap-6 md:justify-center">
 				<div class="flex flex-col items-center gap-2">
@@ -79,10 +88,12 @@
 					{/each}
 				</ul>
 
-				<span class="{buttonVariants({ variant: 'default', size: 'lg' })} text-base">
+				<a
+					href={half.ctaHref}
+					class="{buttonVariants({ variant: 'default', size: 'lg' })} relative z-20 text-base">
 					{half.cta}
 					<ArrowRight class="size-4 transition-transform group-hover:translate-x-1" />
-			</span>
+				</a>
 		</div>
 	</div>
 {/each}

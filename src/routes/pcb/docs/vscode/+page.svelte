@@ -36,11 +36,15 @@ code typecad_project.code-workspace`;
 		[
 			'Copper ΔT',
 			'The thermal view — where the layout heats up at this operating point: wires, vias, pours, and the FR4 itself as a heat field'
+		],
+		[
+			'Layout',
+			'Arrange the board by hand — drag parts, draw and trim copper with the board rules watching, then apply & rebuild writes the session back into your TypeScript (see the Layout view news post)'
 		]
 	];
 
 	const viewerTools = [
-		['Pan / zoom / fit', 'All five views share one SVG frame — one viewport, every render'],
+		['Pan / zoom / fit', 'All views share one SVG frame — one viewport, every render'],
 		['Ruler', 'Measure with shift-angle snap'],
 		['Component search', 'Find a designator on the board'],
 		['Net highlighting', 'Click copper to light up a net — the match pops against a dimmed board'],
@@ -130,7 +134,7 @@ typecad-pcb simulate    # solves the operating point → build/<board>_op.json
 	<title>The VS Code extension — typeCAD/pcb docs</title>
 	<meta
 		name="description"
-		content="The typeCAD/pcb VS Code extension: pin hovers, a five-view board viewer (Gerber, PCBA, blueprint, ngspice, Copper ΔT), and two-way cross-probing — bundled into every new project."
+		content="The typeCAD/pcb VS Code extension: pin hovers, a board viewer (Gerber, PCBA, blueprint, ngspice, Copper ΔT, and layout views), and two-way cross-probing — bundled into every new project."
 	/>
 </svelte:head>
 
@@ -174,7 +178,7 @@ typecad-pcb simulate    # solves the operating point → build/<board>_op.json
 	name="The board viewer"
 	kind="feature"
 	purpose="`typeCAD/pcb: View Board` opens a panel rendering the compiled board. A switcher under
-		the board title selects one of five views, all sharing one SVG frame — pan/zoom, the ruler,
+		the board title selects one of six views, all sharing one SVG frame — pan/zoom, the ruler,
 		DRC markers, search, and cross-probing work in every one of them."
 	imports={"typeCAD/pcb: View Board"}>
 	{#snippet example()}
@@ -258,8 +262,9 @@ typecad-pcb simulate    # solves the operating point → build/<board>_op.json
 		<DocsTable headers={['Surface', 'What it shows']} rows={ambient} />
 	{/snippet}
 	<Callout>
-		<strong>typeCAD/pcb: Browse Components</strong> is a QuickPick over the compiled board —
-		reference, value, footprint, source variable — and zooms the viewer to the pick.
+		<strong>typeCAD/pcb: View Component on Board</strong> doubles as the component browser — run
+		it from the palette without a selection and it shows a QuickPick over the compiled board
+		(reference, value, footprint, source variable), then zooms the viewer to the pick.
 	</Callout>
 </ApiCard>
 

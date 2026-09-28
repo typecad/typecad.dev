@@ -3,10 +3,11 @@
 	import Callout from '$lib/components/docs/callout.svelte';
 	import CodeBlock from '$lib/components/docs/code-block.svelte';
 
-	const subpath = `// ❌ wrong — there are no subpath imports
+	const subpath = `// ❌ wrong — components don't live on subpaths
 import { Connector } from '@typecad/pcb/passives';
 
-// ✅ everything ships from the package root
+// ✅ every component ships from the package root
+// (the real subpaths — /routing, /diff, /docgen, ... — are tooling APIs)
 import { Connector } from '@typecad/pcb';`;
 
 	const connect = `// ❌ wrong
@@ -54,7 +55,7 @@ new Connector({ number: 3 })`;
 			<li>Run <code>npm install</code> in <code>hw/</code></li>
 		</ul>
 		<h3 class="mt-4 text-sm font-bold">&ldquo;Module has no exported member …&rdquo;</h3>
-		<p class="mt-2 text-sm leading-relaxed">Importing from a subpath instead of the package root:</p>
+		<p class="mt-2 text-sm leading-relaxed">Importing a component from a subpath instead of the package root:</p>
 		<CodeBlock code={subpath} label="imports.ts" class="mt-2" />
 	{/snippet}
 </ApiCard>

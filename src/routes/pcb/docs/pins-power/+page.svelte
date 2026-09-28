@@ -5,7 +5,7 @@
 	import DocsTable from '$lib/components/docs/docs-table.svelte';
 	import MethodDoc from '$lib/components/docs/method-doc.svelte';
 
-	const numericPins = `import { Resistor } from '@typecad/passives/0805'
+	const numericPins = `import { Resistor } from '@typecad/pcb';
 let r1 = new Resistor({ value: '1kohm' });
 
 r1.pin(1);      // first pin

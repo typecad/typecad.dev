@@ -42,7 +42,7 @@ export class MyResistor extends Package {
 		['outline(x, y, w, h, fillet?)', 'Rectangle board outline'],
 		['zone(options) / keepout(options)', 'Copper pours and keepout areas'],
 		['group(name, ...components)', 'Group components on the PCB'],
-		['place(component, { x, y, rotation? })', 'Position a component'],
+		['place(...components)', 'Place components on the board at their assigned positions'],
 		['board', 'Live board bounds — center, edges, corners (see Placement)'],
 		['rect / circle / line / poly / text', 'Graphics primitives on the board'],
 		['bom()', 'Bill of materials data'],

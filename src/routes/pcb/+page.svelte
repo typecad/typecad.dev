@@ -47,7 +47,7 @@
 			project.
 		</p>
 		<div class="mt-2 flex flex-wrap items-center justify-center gap-3">
-			<a href="/pcb/docs" class={buttonVariants({ size: 'lg' })}>
+			<a href="/pcb/docs/getting-started" class={buttonVariants({ size: 'lg' })}>
 				Get started <ArrowRight class="size-4" />
 			</a>
 			<a

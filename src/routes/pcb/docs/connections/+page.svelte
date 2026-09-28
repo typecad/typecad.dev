@@ -4,9 +4,8 @@
 	import CodeBlock from '$lib/components/docs/code-block.svelte';
 	import MethodDoc from '$lib/components/docs/method-doc.svelte';
 
-	const netExample = `import { Capacitor } from '@typecad/passives/0805'
+	const netExample = `import { Capacitor, PCB } from '@typecad/pcb';
 import { ATtiny85_20S } from './ATtiny85_20S';
-import { PCB } from '@typecad/pcb';
 
 let typecad = new PCB('typecad_docs');
 let u1 = new ATtiny85_20S();

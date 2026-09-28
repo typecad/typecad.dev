@@ -14,8 +14,8 @@
 	const doctor = `npx @typecad/pcb doctor`;
 
 	const requirements = [
-		['KiCAD', 'version 10.0 — required', 'kicad.org'],
-		['npm / Node.js', 'version 20 or later — required', 'nodejs.org'],
+		['KiCAD', 'version 10.0 — required for the part libraries and the final layout pass; the build, checks, and gerber export run without it', 'kicad.org'],
+		['npm / Node.js', 'version 18 or later — required', 'nodejs.org'],
 		['Visual Studio Code', 'Not required, but highly recommended — new projects bundle the typeCAD/pcb extension (board viewer, pin hovers)', 'code.visualstudio.com'],
 		['typeCAD/hal', 'Optional — firmware projects scaffolded by create use it', 'typecad.dev/hal/docs'],
 		['git', 'Optional — used for version control features; keep git in your PATH', 'git-scm.com'],
@@ -40,7 +40,7 @@
 		['doc', 'Generate HTML documentation from Markdown and PCB files'],
 		['doctor', 'Verify the environment; --fix attempts automatic fixes'],
 		['validate', 'Check source code without a full build'],
-		['drc / erc', 'Run KiCAD\'s design and electrical rule checks'],
+		['drc / erc', "Run the built-in design and electrical rule checks — --kicad for KiCad's own"],
 		['--json / --help / --version', 'Global options on every command']
 	];
 </script>
@@ -80,8 +80,8 @@
 	name="📦 Create a project"
 	kind="command"
 		purpose="One command scaffolds a project. You'll be prompted for the project name, whether to
-			also scaffold a typeCAD/hal firmware project (and its board target), whether to create a
-			git repository, and which optional utility packages to install."
+			also scaffold a typeCAD/hal firmware project (and its board target), and whether to create a
+			git repository."
 	imports={"npx @typecad/pcb create"}>
 	{#snippet example()}
 		<CodeBlock code={createProject} label="terminal" />
@@ -134,8 +134,8 @@
 		<code>add component</code> asks for the symbol/footprint source — the installed KiCAD library,
 		a local file, or an EasyEDA/JLCPCB <code>C###</code> part — then generates a typed
 		<code>[component].ts</code> file with usage instructions. There's no need to add passives
-		(resistors, capacitors, etc.) this way — they come from
-		<a href="/pcb/docs/passives" class="font-bold text-primary underline">@typecad/passives</a>.
+		(resistors, capacitors, etc.) this way — they come built into
+		<a href="/pcb/docs/passives" class="font-bold text-primary underline">@typecad/pcb</a>.
 	</p>
 </ApiCard>
 

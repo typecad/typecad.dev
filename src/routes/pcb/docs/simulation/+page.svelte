@@ -88,10 +88,10 @@ ac?.getPhaseDeg('v(vout)');`;
 <ApiCard
 	name="simulate"
 	kind="method"
-	purpose="Takes no arguments: passives are netlisted automatically and power rails are discovered
-		from the `Power` objects already attached to the circuit. Returns a `SimulationContext` for
-		running an analysis. Needs the ngspice binary in your PATH — one of the optional installs
-		listed in Getting started."
+	purpose="Passives are netlisted automatically and power rails are discovered from the `Power`
+		objects already attached to the circuit — pass `Power` arguments explicitly to force the
+		sources. Returns a `SimulationContext` for running an analysis. Needs the ngspice binary in
+		your PATH — one of the optional installs listed in Getting started."
 	imports={"pcb.simulate()"}>
 	{#snippet example()}
 		<CodeBlock code={divider} label="a 5 V divider, simulated" />

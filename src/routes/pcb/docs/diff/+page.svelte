@@ -9,7 +9,7 @@
 	const gitRevRev = `typecad-pcb diff v1.0 v1.1 -- ./build/typecad_concepts.kicad_pcb`;
 	const flags = [
 		['--full', 'Include all layers — the standard set otherwise (User layers off)'],
-		['--theme=<name>', 'KiCAD SVG plot theme for the renders (default: KiCAD\u2019s)'],
+		['--theme=<name>', 'SVG plot theme for the renders (default: the typeCAD house theme)'],
 		['--output=<path>', 'HTML destination — default gitdiff-results.html next to the modified file']
 	];
 

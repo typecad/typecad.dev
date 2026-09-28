@@ -24,7 +24,7 @@ const big = Random.int();            // non-negative 31-bit integer`;
 	const randomMethods = [
 		['Random.seed(v)', 'Seed the PRNG — only needed for deterministic sequences (tests, simulations)'],
 		['Random.upTo(max)', '0 up to (but not including) max'],
-		['Random.between(min, max)', 'Inclusive integer range'],
+		['Random.between(min, max)', 'Integer from min up to (but not including) max'],
 		['Random.int()', 'Non-negative 31-bit integer']
 	];
 </script>
@@ -68,7 +68,7 @@ const big = Random.int();            // non-negative 31-bit integer`;
 	{/snippet}
 	<MethodDoc name="upTo" signature="Random.upTo(max): number" returns="0 … max−1">
 	</MethodDoc>
-	<MethodDoc name="between" signature="Random.between(min, max): number" returns="inclusive range">
+	<MethodDoc name="between" signature="Random.between(min, max): number" returns="min through max−1">
 	</MethodDoc>
 	<MethodDoc name="int" signature="Random.int(): number" returns="31-bit non-negative">
 	</MethodDoc>

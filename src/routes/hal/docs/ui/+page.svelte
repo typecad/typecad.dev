@@ -18,7 +18,7 @@
 </style>
 
 <script lang="ts">
-  import { ui } from '@typecad/hal';
+  import { ui } from '@typecad/ui';
   const count = ui.signal(0);
 <\/script>`;
 
@@ -101,7 +101,7 @@ export default config;`;
 	kind="functions"
 	purpose="The script side: reactive state, bindings, input, and canvases. Everything is a
 		compile-time construct — each call lowers to specific draw or read code."
-	imports={"import { ui } from '@typecad/hal'"}>
+	imports={"import { ui } from '@typecad/ui'"}>
 	{#snippet example()}
 		<DocsTable headers={['Call', 'What it does']} rows={api} monoCols={[0]} />
 	{/snippet}

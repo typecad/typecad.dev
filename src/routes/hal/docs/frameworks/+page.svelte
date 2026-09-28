@@ -38,7 +38,7 @@ export default config;`;
 	const compare = [
 		['Target', 'Microcontrollers — ESP32, nRF52, RP2040, STM32', 'Your desktop — Windows, macOS, Linux'],
 		['Under the hood', 'Zephyr kernel, devicetree, west', 'Plain C++ compiled with g++ / clang++'],
-		['number', 'int (long when values overflow)', 'long long'],
+		['number', 'int — widened to long long when values overflow', 'long long'],
 		['Timers', 'Thread for background work', 'setTimeout / setInterval exist too'],
 		['Hardware', 'The real thing — pins, buses, radios', 'Simulated pins; SDL for UI screens'],
 		['Best at', 'Shipping firmware', 'Fast logic tests and UI iteration without hardware']
@@ -54,7 +54,7 @@ export default config;`;
 
 	const limits = [
 		'Real-time radios (WiFi, BLE, MQTT, HTTP) exist only on radio-capable targets',
-		'No OTA, USB host, CAN/TWAI, I2S audio, Ethernet, or hardware crypto as HAL operations — rawCpp() is the escape hatch',
+		'No OTA, USB host, Ethernet, or hardware crypto as HAL operations — rawCpp() is the escape hatch',
 		'No C++ exceptions or RTTI — throw compiles to a deliberate halt loop; try/catch is a build error',
 		'No C++ standard library containers — TS arrays and strings lower to fixed static buffers'
 	];

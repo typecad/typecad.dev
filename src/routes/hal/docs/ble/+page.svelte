@@ -96,7 +96,7 @@ ble.onDrop(() => UART0.writeLine('central disconnected'));   // advertising stay
 		Pick the GATT spec's type for the characteristic you implement.
 	</p>
 
-	<MethodDoc name="onConnect / onDrop" signature="onConnect(fn): BLE">
+	<MethodDoc name="onConnect / onDrop" signature="onConnect(fn): void">
 		<CodeBlock code={connectionEvents} label="events.ts" class="mt-1" />
 		<p class="mt-2">
 			<code>linked()</code> is true while a central is connected; <code>clients()</code> reports the

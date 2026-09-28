@@ -50,8 +50,8 @@ npm install @typecad/rd-bq24210`;
 			</li>
 			<li>
 				The panel and battery are <code>Connector</code>s wrapped in <code>Power</code> objects —
-				wiring them to <code>charger.U1</code> is ordinary <code>net()</code> work, and the
-				power-aware checks see the voltages.
+				wiring them to the module's pins (<code>charger.VBUS</code>, <code>charger.BAT</code>) is
+				ordinary <code>net()</code> work, and the power-aware checks see the voltages.
 			</li>
 			<li>
 				<code>charger.components</code> is everything the package placed — spread it into

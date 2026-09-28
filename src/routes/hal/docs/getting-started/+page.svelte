@@ -6,7 +6,7 @@
 	import { buttonVariants } from '$lib/components/ui/button/index.js';
 	import { ArrowRight } from '@lucide/svelte';
 
-	const create = `npx @typecad/hal create my-project --target esp32s3_devkitc
+	const create = `npx @typecad/hal create my-project
 cd my-project`;
 	const firmware = `import { GPIO, Time } from '@typecad/hal';
 import { LED } from '@typecad/hal';
@@ -21,7 +21,7 @@ while (true) {
 	const buildUpload = `npx @typecad/hal build --compile --upload --port COM4`;
 
 	const quickReference = [
-		['Create project', 'npx @typecad/hal create my-project --target esp32s3_devkitc'],
+		['Create project', 'npx @typecad/hal create my-project'],
 		['Compile', 'npx @typecad/hal build --compile'],
 		['Upload', 'npx @typecad/hal build --upload --port COM4'],
 		['Watch mode', 'npx @typecad/hal build --watch --compile'],

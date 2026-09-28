@@ -84,7 +84,7 @@ Time.sleep(100);
 <ApiCard
 	name="loopback — the bench test"
 	kind="pattern"
-	purpose={`The zero-hardware verification: begin({ loopback: true }) routes every sent frame back
+	purpose={`The zero-hardware verification: constructing with loopback: true routes every sent frame back
 		to this controller's own filters. No transceiver, no wiring, no second node — and the round
 		trip exercises the whole path: devicetree enable, driver init, frame build, tx submission,
 		filter callback.`}

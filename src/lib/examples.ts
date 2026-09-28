@@ -10,12 +10,6 @@ export interface Example {
 	html: string;
 }
 
-export interface ExampleStub {
-	/** title of an example that will be written later */
-	title: string;
-	blurb: string;
-}
-
 function frontmatter(raw: string): { meta: Record<string, string>; body: string } {
 	const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/);
 	const meta: Record<string, string> = {};

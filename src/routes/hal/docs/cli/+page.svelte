@@ -12,6 +12,9 @@
 		['typecad-hal preview', 'Browser preview of a UI screen'],
 		['typecad-hal doctor', 'Verify the toolchain (west, SDK, board target)'],
 		['typecad-hal licenses', 'SPDX audit of the Zephyr tree and its projects'],
+		['typecad-hal sbom', 'Emit/verify the build-true SBOM (CycloneDX 1.6 or SPDX 2.3)'],
+		['typecad-hal audit', 'Security baseline over the last build\u2019s merged Kconfig + devicetree'],
+		['typecad-hal trace capture | report | view', 'Runtime trace: record the board, summarize it, serve the live timeline'],
 		['typecad-hal library search | install | init | validate', 'The library-package catalog'],
 		['typecad-hal query', 'Ask the board module questions'],
 		['typecad-hal gen-decls', 'Generate .d.ts from C++ headers'],
@@ -63,7 +66,7 @@ typecad-hal build --compile --upload --monitor --port COM4`;
 	<title>The CLI — typeCAD/hal docs</title>
 	<meta
 		name="description"
-		content="Every typecad-hal command and its flags: create, build, test, board, preview, doctor, licenses, library, query, and gen-decls."
+		content="Every typecad-hal command and its flags: create, build, test, board, preview, doctor, licenses, sbom, audit, trace, library, query, and gen-decls."
 	/>
 </svelte:head>
 

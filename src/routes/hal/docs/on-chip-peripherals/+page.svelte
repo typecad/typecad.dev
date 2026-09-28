@@ -70,7 +70,7 @@ wdt.feed();                        // keep it alive`;
 		(for example RTC1 on the nRF52840). Using an index the chip doesn't have is a build error that
 		names the available counters.
 	</Callout>
-	<MethodDoc name="onAlarm" signature="onAlarm(fn): Counter">
+	<MethodDoc name="onAlarm" signature="onAlarm(fn): void">
 		<p>
 			The handler runs in interrupt context — the same ISR-safety rules as
 			<a href="/hal/docs/hardware-events" class="font-bold text-primary underline">Hardware Events</a>

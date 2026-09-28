@@ -5,8 +5,7 @@
 	import DocsTable from '$lib/components/docs/docs-table.svelte';
 	import MethodDoc from '$lib/components/docs/method-doc.svelte';
 
-	const routeNet = `import { PCB } from '@typecad/pcb';
-import { Resistor } from '@typecad/passives/0805';
+	const routeNet = `import { PCB, Resistor } from '@typecad/pcb';
 
 let typecad = new PCB('autoroute_example');
 

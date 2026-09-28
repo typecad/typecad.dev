@@ -94,7 +94,7 @@ display: {
 
 	const touchRows = [
 		['FT6336U (capacitive, I²C)', 'sda/scl, i2cAddress, calibration — driven through Zephyr\'s input subsystem (in-tree driver, polling). If the module gates touch power on a GPIO, set resetPin or the controller never answers'],
-		['XPT2046 (resistive, SPI)', 'cs/irq, calibration, minPressure (Z1 threshold, default 400) — shares the display\'s SPI bus as the second chip-select'],
+		['XPT2046 (resistive, SPI)', 'cs/irq, calibration, minPressure (Z1 threshold, default 10) — shares the display\'s SPI bus as the second chip-select'],
 		['calibration', 'Raw controller range → screen space. Capacitive panels use the panel\'s native bounds; resistive panels use measured min/max']
 	];
 

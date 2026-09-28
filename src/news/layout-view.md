@@ -32,7 +32,7 @@ Press `X` on a pad or trace to start a route. Click to anchor, double-click (or 
 - `Z` solves for 50 Ω against your stackup and leaves a comment recording the intent.
 - `I` adopts the width of a trace you click on.
 
-The gray band around your route is the clearance keep-out from your board rules, and anything you push into it turns red. The width floor and net-class defaults come from the board's `.kicad_pro`, or from a `typecad.rules.json` you put beside `typecad.conf.ts` when you'd rather hand-author them.
+The gray band around your route is the clearance keep-out from your board rules, and anything you push into it turns red. The width floor and net-class defaults come from the board's `.kicad_pro`, or from a rules JSON referenced by `rules:` in `typecad.conf.ts` when you'd rather hand-author them.
 
 Deleting is the same story in reverse: `U` grows a segment selection, `Del` removes it — off the board now, and out of the source when you apply.
 

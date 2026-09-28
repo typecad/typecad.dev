@@ -45,7 +45,8 @@ export default defineConfig({
 		['kicad_cli', 'string', 'Path to the kicad-cli binary'],
 		['kicad_path', 'string', 'Path to the KiCAD installation directory'],
 		['use_flatpak', 'boolean', 'Prioritize a Flatpak installation'],
-		['verbose', 'boolean', 'Verbose output during builds']
+		['verbose', 'boolean', 'Verbose output during builds'],
+		['rules', 'string', 'Path to a JSON design-constraints file (board rules, net classes, net assignments, DRC severities), relative to this conf file']
 	];
 </script>
 
@@ -110,7 +111,7 @@ export default defineConfig({
 	<DocsTable headers={['Option', 'Type', 'Description']} rows={configOptions} monoCols={[0, 1]} />
 </div>
 <p class="mt-4 text-sm leading-relaxed">
-	Run <code>typecad doctor</code> to verify the environment — it checks KiCAD, Node.js, and the
+	Run <code>typecad-pcb doctor</code> to verify the environment — it checks KiCAD, Node.js, and the
 	required tools. Use <code>--fix</code> for automatic fixes and <code>--json</code> for
 	machine-readable output.
 </p>

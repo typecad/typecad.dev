@@ -34,9 +34,9 @@ export class ATtiny85_20S extends Component {
 	const useExample = `import { ATtiny85_20S } from './ATtiny85_20S';
 let u1 = new ATtiny85_20S();`;
 
-	const searchExample = `typecad search "voltage regulator"
-typecad search LM358
-typecad search "op amp" --format=json --limit=10`;
+	const searchExample = `typecad-pcb search "voltage regulator"
+typecad-pcb search LM358
+typecad-pcb search "SOIC-8" --footprint --json`;
 
 	const options = [
 		['reference', 'string', 'Reference designator (R1, U2...)'],
@@ -118,7 +118,7 @@ let tie1 = new NetTie({ net1: 'VBUS', net2: 'VOUT' });  // ties two nets, pin co
 <div class="mt-10 border-2 border-foreground bg-card p-5 shadow-sm">
 	<h2 class="text-lg font-bold">typecad add component</h2>
 	<p class="mt-2 text-sm leading-relaxed">
-		The better way to create components. Run <code>typecad add component</code> from the
+		The better way to create components. Run <code>typecad-pcb add component</code> from the
 		<code>./hw</code> directory, or click the <code>add_component</code> button in the VSCode GUI
 		under NPM Scripts. It asks where the component comes from — the KiCAD library, a local file, or
 		an EasyEDA/JLCPCB part — and generates a <code>.ts</code> file like this:
@@ -134,13 +134,14 @@ let tie1 = new NetTie({ net1: 'VBUS', net2: 'VOUT' });  // ties two nets, pin co
 		<CodeBlock code={useExample} label="use.ts" />
 	</div>
 
-	<h3 class="mt-6 text-sm font-bold uppercase tracking-widest">Finding parts: typecad search</h3>
+	<h3 class="mt-6 text-sm font-bold uppercase tracking-widest">Finding parts: typecad-pcb search</h3>
 	<div class="mt-2">
 		<CodeBlock code={searchExample} label="terminal" />
 	</div>
 	<p class="mt-2 text-sm leading-relaxed">
 		Fuzzy-matches against the KiCAD symbol libraries and returns the symbol name, footprint, and
-		description, in <code>LibraryName:SymbolName</code> format. Options:
+		description, in <code>LibraryName:SymbolName</code> format. With <code>--footprint</code>, it
+		searches the installed footprint libraries instead — results include the pad numbers. Options:
 		<code>--format</code> (detailed, compact, table, json), <code>--sort</code> (score, id,
 		manufacturer, package), <code>--limit</code> (default 5).
 	</p>

@@ -143,7 +143,7 @@ const lab    = new Request(Request.GET, 'https://lab-server.local', { insecure: 
 		<CodeBlock code={asyncConnect} label="async-connect.ts" class="mt-3" />
 	</MethodDoc>
 
-	<MethodDoc name="onUp / onDrop" signature="onUp(fn): WiFi">
+	<MethodDoc name="onUp / onDrop" signature="onUp(fn): void">
 		<CodeBlock code={linkEvents} label="link-events.ts" class="mt-1" />
 	</MethodDoc>
 

@@ -14,12 +14,12 @@
 		['diff', 'Visually diff two boards — files or git revisions'],
 		['doc', 'Render Markdown + a board into an HTML document'],
 		['validate', 'Type-check and run the entry file without a full build'],
-		['erc / drc', "Run KiCAD's electrical and design rule checks"],
+		['erc / drc', "Run the built-in electrical and design rule checks — --kicad for KiCad's own"],
 		['check', 'Build + unconnected pins + ERC + DRC in one pass, one report'],
 		['diagnostics', 'Board report: power tree, BOM, ERC/DRC summary'],
 		['query', 'Ask a built board questions — nets, components, power'],
 		['edit', 'Small edits to a built board — connect, move, route'],
-		['export gerbers / drill', 'Fabrication outputs via kicad-cli'],
+		['export gerbers / drill', "Fabrication outputs — typeCAD's own writer, no KiCAD needed"],
 		['skills', 'AI-assistant skill packs for coding with typeCAD'],
 		['package', 'Browse and install typeCAD packages from npm'],
 		['doctor', 'Verify the environment; --fix attempts automatic fixes'],
@@ -37,7 +37,7 @@
 		['[entry]', 'Optional entry file override'],
 		['--watch, -w', 'Rebuild on file changes'],
 		['--outDir <dir>', 'Output directory (default ./build/)'],
-		['--skip-erc / --skip-drc', 'Leave out one check'],
+		['--skip-erc / --skip-drc', "With --diagnostics: leave one check out of the report"],
 		['--diagnostics', 'Write a Markdown board report (--out=<file.md> names it)'],
 		['--verbose', 'Chatty output']
 	];
@@ -52,9 +52,10 @@
 
 	const searchFlags = [
 		['<query>', 'Fuzzy match against the KiCAD symbol libraries'],
+		['--footprint', 'Search the installed footprint libraries instead — results show library:footprint and pad numbers'],
 		['--format=<detailed|compact|table|json>', 'Output style (default detailed)'],
 		['--sort=<score|id|manufacturer|package>', 'Result ordering (default score)'],
-		['--limit=<n>', 'Result count (default 5)']
+		['--limit=<n>', 'Result count (default 5, footprints 10)']
 	];
 
 	const checkFlags = [
@@ -139,8 +140,8 @@ typecad-pcb query unconnected --json`;
 <ApiCard
 	name="checks"
 	kind="reference"
-	purpose="Validation at every level: type-check the source, run the KiCAD rule checks, or produce
-		a full board report. The JSON shapes are stable — checks are CI-friendly."
+	purpose="Validation at every level: type-check the source, run the electrical and design rule
+		checks, or produce a full board report. The JSON shapes are stable — checks are CI-friendly."
 	imports={"typecad-pcb erc · drc · check · diagnostics · doctor · validate"}>
 	{#snippet example()}
 		<DocsTable headers={['Command', 'Behavior']} rows={checkFlags} monoCols={[0]} />
