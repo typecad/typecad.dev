@@ -79,6 +79,11 @@ export const PCB_DOC_GROUPS: PcbDocGroup[] = [
 				slug: 'board-layout',
 				title: 'Board Layout',
 				blurb: 'Outlines, zones, design rules, graphics, vias'
+			},
+			{
+				slug: 'artwork',
+				title: 'Artwork',
+				blurb: 'PNG and SVG images as copper, silkscreen, and mask openings'
 			}
 		]
 	},
@@ -89,6 +94,11 @@ export const PCB_DOC_GROUPS: PcbDocGroup[] = [
 				slug: 'checks-export',
 				title: 'Checks & Export',
 				blurb: 'ERC, DRC, export functions, kicad-cli'
+			},
+			{
+				slug: 'assembly-export',
+				title: 'Assembly export',
+				blurb: 'Centroid (CPL), BOM, and the zipped provider package — JLCPCB, PCBWay, OpenPnP profiles'
 			},
 			{
 				slug: 'simulation',

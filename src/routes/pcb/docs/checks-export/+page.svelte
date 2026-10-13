@@ -115,3 +115,9 @@ export default defineConfig({
 	required tools. Use <code>--fix</code> for automatic fixes and <code>--json</code> for
 	machine-readable output.
 </p>
+<p class="mt-4 text-sm leading-relaxed">
+	For assembly outputs — the centroid/CPL file, the BOM, and the zipped PCBA package for shops
+	like JLCPCB or your own OpenPnP machine — see
+	<a class="underline underline-offset-4" href="/pcb/docs/assembly-export">Assembly export</a>.
+	Those run on our own writer and don't need KiCAD at all.
+</p>

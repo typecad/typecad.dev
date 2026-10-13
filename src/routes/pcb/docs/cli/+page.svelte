@@ -20,6 +20,7 @@
 		['query', 'Ask a built board questions — nets, components, power'],
 		['edit', 'Small edits to a built board — connect, move, route'],
 		['export gerbers / drill', "Fabrication outputs — typeCAD's own writer, no KiCAD needed"],
+		['export pos / bom / assembly', 'Centroid (CPL), BOM, and the zipped PCBA package — provider profiles for JLCPCB, PCBWay, Seeed, OpenPnP'],
 		['skills', 'AI-assistant skill packs for coding with typeCAD'],
 		['package', 'Browse and install typeCAD packages from npm'],
 		['doctor', 'Verify the environment; --fix attempts automatic fixes'],
@@ -73,6 +74,7 @@
 		['edit move <ref> --to x,y | --left-of <ref> [--gap mm]', 'Move a part — relative placement included'],
 		['edit route <from> <to> [--width mm] [--layers F.Cu,B.Cu]', 'Route a pair; --dry-run previews, --file targets a source file'],
 		['export gerbers | export drill -o <dir>', 'Fabrication outputs (default ./build/gerbers/)'],
+		['export pos | bom | assembly --profile <id>', 'Assembly files (default ./build/assembly/) — see the assembly export page'],
 		['skills list | get <name> | search <query> | export', 'AI skill packs — --out defaults to .claude/skills']
 	];
 
