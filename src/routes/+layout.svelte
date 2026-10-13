@@ -25,9 +25,20 @@
 		name="description"
 		content="typeCAD builds electronics with code: typeCAD/pcb designs circuit boards from TypeScript, typeCAD/hal generates the firmware that runs them."
 	/>
+	<!-- favicon follows the section: green square for pcb, red for hal (last icon link wins) -->
+	{#if isPcb}
+		<link rel="icon" type="image/png" sizes="any" href="/favicon-pcb.png" />
+	{:else if page.url.pathname.startsWith('/hal')}
+		<link rel="icon" type="image/png" sizes="any" href="/favicon-hal.png" />
+	{/if}
 </svelte:head>
 
 <div class="flex min-h-screen flex-col bg-background font-sans text-foreground">
+	<!-- development notice — remove when the site ships -->
+	<div class="border-b-2 border-foreground bg-yellow-300 px-4 py-1.5 text-center text-xs font-bold">
+		🚧 This site is still in development — pages move, and docs are landing as they're written.
+	</div>
+
 	{#if page.url.pathname !== '/'}
 			<header class="sticky top-0 z-50 border-b-2 border-foreground bg-background">
 				<div class="container flex h-14 items-center justify-end sm:justify-between">
