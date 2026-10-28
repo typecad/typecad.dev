@@ -58,6 +58,7 @@ const config: TypecadConfig = {
     port: 'COM4',           // required in config — or use the flag / env var
     baudRate: 115200,
     timeout: 30000,
+    warmupMs: 2500,         // settle after flashing before the suite starts — 0 disables
     include: ['tests/**/*.test.ts'],
   },
 };
@@ -123,6 +124,13 @@ typecad-hal test --port COM4 --include tests/sanity.test.ts`} label="terminal" /
 	<p class="mt-2 text-sm leading-relaxed">
 		Port resolution: <code>--port</code> flag, then the <code>TYPECAD_HAL_PORT</code> env var,
 		then <code>test.port</code> in the config.
+	</p>
+	<p class="mt-2 text-sm leading-relaxed">
+		<code>warmupMs</code> (default 2500) is how long the firmware waits after flashing before
+		the suite starts talking. Bootloader-flashed boards reopen the serial port a second or two
+		after the flash — without the wait, a fast suite can finish its whole exchange before the
+		runner starts listening, and every run times out. Set it to 0 if your board is already
+		awake by the time the port opens.
 	</p>
 </ApiCard>
 

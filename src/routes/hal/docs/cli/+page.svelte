@@ -24,7 +24,7 @@
 
 	const createFlags = [
 		['--target, -t / --board, -b', 'The board target, e.g. xiao_ble/nrf52840'],
-		['--framework, -f', 'Framework package (default: @typecad/framework-zephyr)'],
+		['--framework, -f', 'Framework — catalog id (zephyr) or package name (default: @typecad/framework-zephyr)'],
 		['--probe, --flash <id>', 'Named probe method — stlink, jlink, dfu, uf2...'],
 		['--port, -p / --baud', 'Serial defaults for the project'],
 		['--no-starter / --no-install', 'Skip the blink starter / skip npm install'],

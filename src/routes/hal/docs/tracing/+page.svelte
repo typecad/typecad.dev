@@ -127,8 +127,10 @@ done();`;
 	{/snippet}
 	<p class="mt-3 text-sm leading-relaxed">
 		CPU percentages are computed host-side as delta cycles over delta cycles, so idle shows up as
-		its own lane and the lanes sum to ~100%. Heap usage is deliberately not sampled — emitted C++
-		is no-malloc by construction, so the series would be a flat line.
+		its own lane and the lanes sum to ~100%. Heap usage is deliberately not sampled: emitted C++
+		follows a static-lifetime model — objects allocate at boot and are never freed — so a healthy
+		program's heap line is flat by design. If yours isn't, that's a bug in the program (look for
+		allocation inside a loop), not something the sampler would have caught for you.
 	</p>
 	<Callout label="Alarms run on the device">
 		With <code>alarms</code> set, the sampler prints an alarm line the moment a thread's unused
