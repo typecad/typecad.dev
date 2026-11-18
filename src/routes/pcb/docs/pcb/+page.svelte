@@ -48,7 +48,7 @@ export class MyResistor extends Package {
 		['bom()', 'Bill of materials data'],
 		['stage(...items)', 'Stage components without emitting them'],
 		['dnc(...pins)', 'Mark pins as do-not-connect — places a no-connect flag in the schematic'],
-		['contract(options)', 'Write a hardware contract (an MCU's connected pins and external components) for firmware tooling'],
+		['contract(options)', 'Write a hardware contract (the connected pins and external components of an MCU) for firmware tooling'],
 		['warn(message) / error(message)', 'warn() logs a build warning; error() throws a typed error — for validating design constraints in code'],
 		['waitForPendingAutoroutes()', 'Block until queued auto-routes finish'],
 		['layerCount', 'Number of copper layers (read-only)']
