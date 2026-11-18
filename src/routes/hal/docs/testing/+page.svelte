@@ -44,6 +44,7 @@ done();   // required — ends the suite`;
 		['--timeout, -t', 'Suite timeout in ms (default 30000)'],
 		['--include, -i / --exclude, -x', 'Glob filters (repeatable)'],
 		['--config <path>', 'A different config file'],
+		['--board, -b / --build-target', 'Override the board package / the framework build target'],
 		['--discover', 'List USB serial ports with VID:PID'],
 		['--dry-run', 'Show what would run'],
 		['--bail', 'Stop on the first failure'],

@@ -122,7 +122,10 @@ code typecad_project.code-workspace`;
 		['typecad-pcb.viewNet', 'View Net on Board — highlight a net\'s copper'],
 		['typecad-pcb.runDrc', 'Run DRC — violations land in Problems at their source lines'],
 		['typecad-pcb.diffBoard', 'Diff Board vs HEAD — the built board\'s visual diff in a panel'],
-		['typecad-pcb.refreshBoardData', 'Refresh Board Data — re-read the built board']
+		['typecad-pcb.refreshBoardData', 'Refresh Board Data — re-read the built board'],
+		['typecad-pcb.startKiCadSync', 'Start KiCAD Sync — sync KiCAD layout edits back into your source'],
+		['typecad-pcb.switchBoard', 'Switch Board — choose which board the viewer shows (multi-board projects)'],
+		['typecad-pcb.restoreBackup', 'Restore Source from Backup — restore your source from the pre-sync backup']
 	];
 
 	const simulateLoop = `typecad-pcb build       # board + netlist into ./build/

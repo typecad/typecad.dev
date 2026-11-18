@@ -30,7 +30,7 @@ while (true) {
 	];
 
 	const requirements = [
-		['Node.js', 'LTS version recommended — node --version to verify', 'nodejs.org'],
+		['Node.js', 'Node 22.11 or later — node --version to verify', 'nodejs.org'],
 		['Visual Studio Code', 'Not required, but recommended — the typeCAD/hal extension comes vendored into every project', 'code.visualstudio.com'],
 		['git', 'Optional', 'git-scm.com']
 	];
@@ -56,7 +56,7 @@ while (true) {
 	kind="checklist"
 	purpose="Node.js is the only real requirement, and it works the same on Linux, macOS,
 		and Windows (no WSL). No Python, conda, or SDK to set up first."
-	imports="Node.js LTS">
+	imports="Node.js 22.11+">
 	{#snippet example()}
 		<DocsTable headers={['Software', 'Notes', 'Link']} rows={requirements} linkCols={[2]} />
 	{/snippet}

@@ -39,6 +39,7 @@ J6,17.795,66.345,T,0`;
 		['--centroid=<anchor|pads|body>', 'What a row reports — see below (default: body, kicad uses anchor)'],
 		['--origin=<board|aux>', 'Rebase coordinates onto the aux (drill/place) origin'],
 		['--exclude=<globs>', 'Extra refs to drop, comma-separated — added to the profile defaults (FID*, MH*)'],
+		['--units=', 'mm (default), in, or mils'],
 		['--rotation-offset=<deg>', 'Rotation added to every part'],
 		['--bottom-rotation=<deg>', 'Extra rotation for bottom-side parts only'],
 		['--include-dnp', 'Emit do-not-populate parts too (the kicad profile always does)'],

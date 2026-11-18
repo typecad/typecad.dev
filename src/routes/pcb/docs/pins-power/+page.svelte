@@ -52,7 +52,10 @@ typecad.net(vin.gnd, U1.GND);`;
 		['gnd', 'Pin', 'Pin that supplies ground'],
 		['voltage', 'number', 'Volts'],
 		['current', 'number', 'Current capacity'],
-		['direction', "'output' | 'input'", "'output' (default) for power sources, 'input' for power consumers"]
+		['direction', "'output' | 'input'", "'output' (default) for power sources, 'input' for power consumers"],
+		['name', 'string', 'Source designator for simulation (auto-prefixed with V if needed)'],
+		['ac', 'number', 'AC magnitude for small-signal (ac) analysis'],
+		['waveform', 'string', "Raw ngspice source waveform, e.g. 'PULSE(0 5 1m 1u 1u 5m 20m)'"]
 	];
 
 	const powerInfoProps = [

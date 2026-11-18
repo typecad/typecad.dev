@@ -5,7 +5,7 @@
 	import DocsTable from '$lib/components/docs/docs-table.svelte';
 
 	const importCmd = `typecad-pcb import ./existing-board.kicad_pcb`;
-	const applyCmd = `typecad-pcb import ./existing-board.kicad_pcb --apply --capture-layouts`;
+	const applyCmd = `typecad-pcb import ./existing-board.kicad_pcb --apply`;
 
 	const covers = [
 		['Components', 'Footprint placement — position, rotation, side (front/back)'],
@@ -19,7 +19,7 @@
 	const applySteps = [
 		['Position / side changes', 'Footprints that moved in KiCAD update their pcb position in the source'],
 		['Text call changes', 'Board text edits sync back as .text() calls'],
-		['Layout changes', 'referenceLayout / valueLayout / fabLayout — with --capture-layouts']
+		['Layout changes', 'referenceLayout / valueLayout / fabLayout — text layout positions are always imported']
 	];
 </script>
 

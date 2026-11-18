@@ -46,7 +46,12 @@ export class MyResistor extends Package {
 		['board', 'Live board bounds — center, edges, corners (see Placement)'],
 		['rect / circle / line / poly / text', 'Graphics primitives on the board'],
 		['bom()', 'Bill of materials data'],
-		['stage(...items)', 'Stage components without emitting them']
+		['stage(...items)', 'Stage components without emitting them'],
+		['dnc(...pins)', 'Mark pins as do-not-connect — places a no-connect flag in the schematic'],
+		['contract(options)', 'Write a hardware contract (an MCU's connected pins and external components) for firmware tooling'],
+		['warn(message) / error(message)', 'warn() logs a build warning; error() throws a typed error — for validating design constraints in code'],
+		['waitForPendingAutoroutes()', 'Block until queued auto-routes finish'],
+		['layerCount', 'Number of copper layers (read-only)']
 	];
 </script>
 
@@ -86,7 +91,7 @@ export class MyResistor extends Package {
 	<MethodDoc name="create" signature="create(...items): void">
 		<p>
 			After components have been created and modified, call <code>create</code> to include them in
-			the PCB, schematic, and netlist. Accepts components, buses, tracks, and vias.
+			the PCB, schematic, and netlist. Accepts components, vias (which are components), images, tracks, and arrays of these.
 		</p>
 	</MethodDoc>
 

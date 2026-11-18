@@ -49,7 +49,8 @@ export default config;`;
 		['Board targets', 'Every variant in your Zephyr tree — see Boards & Targets. Zephyr ≥4.3 <5.0 supported, checked at build time'],
 		['Probes', 'Named probe methods per board (stlink, jlink, dfu, uf2, picotool, openocd...) — zephyr.probe picks one; zephyr.runner overrides west\u2019s runner directly'],
 		['Kconfig & CMake', 'zephyr.kconfig and zephyr.cmakeArgs feed straight into the west build'],
-		['PSRAM', "psram: 'opi' | 'quad' emits the right Kconfig for boards that have it"]
+		['PSRAM', "Top-level psram: 'opi' | 'quad' emits the right Kconfig for boards that have it"],
+		['Other config fields', "entry, include / exclude, output ({ outDir, defines, extraFlags }), lint (false skips the ESLint gate), storageKb (declared flash size for contract projects), and the test section — see Testing"]
 	];
 
 	const limits = [

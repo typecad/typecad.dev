@@ -8,8 +8,12 @@ import { ATtiny85_20S } from './ATtiny85_20S';
 
 let u1 = new ATtiny85_20S();
 let i2c = new I2C(u1.PB0, u1.PB1);    // SDA on PB0, SCL on PB1
+let sensor = new TMP117();            // any component with SDA / SCL pins
 
-typecad.create(u1, i2c);`;
+// use the bus pins in nets — only components go into create()
+typecad.named('SDA').net(i2c.sda, sensor.SDA);
+typecad.named('SCL').net(i2c.scl, sensor.SCL);
+typecad.create(u1, sensor);`;
 
 	const uartExample = `import { UART } from '@typecad/pcb';
 
@@ -23,19 +27,20 @@ let usb = new USB(u1.DP, u1.DN);      // USB D+ and D- pins`;
 
 <svelte:head>
 	<title>Buses — typeCAD/pcb docs</title>
-	<meta name="description" content="I2C, UART, and USB pin pairings — construct from the component's pins and include with create()." />
+	<meta name="description" content="I2C, UART, and USB pin groupings — construct from the component's pins and use the properties in net() calls." />
 </svelte:head>
 
 <h1 class="mt-3 text-4xl font-bold tracking-tight">Buses</h1>
 <p class="mt-3 leading-relaxed text-muted-foreground">
-	Three thin classes that tie bus pins together on the schematic: <code>I2C</code>, <code>UART</code>,
-	and <code>USB</code>. Construct one from the component's pins and include it with
-	<code>create()</code> alongside the components.
+	Three thin classes that group related bus pins under one name: <code>I2C</code>, <code>UART</code>,
+	and <code>USB</code>. Construct one from the component's pins and read them back as properties
+	(<code>i2c.sda</code>, <code>uart.tx</code>, <code>usb.dp</code>…) when making connections with
+	<code>net()</code>. They aren't passed to <code>create()</code> — only components, images, and tracks are.
 </p>
 
 <ApiCard
 	name="I2C"
-	purpose="An I2C bus — the SDA and SCL pins, tied together for the schematic."
+	purpose="An I2C bus — the SDA and SCL pins, grouped as <code>.sda</code> and <code>.scl</code>."
 	imports={"import { I2C } from '@typecad/pcb'"}>
 	{#snippet example()}
 		<CodeBlock code={i2cExample} label="i2c.ts" />

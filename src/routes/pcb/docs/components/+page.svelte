@@ -51,7 +51,7 @@ typecad-pcb search "SOIC-8" --footprint --json`;
 		['mpn', 'string', 'Manufacturer Part Number'],
 		['dnp', 'boolean', 'true if Do Not Populate'],
 		['simulation', 'object', "{ include: true, model: 'ngspice-model' }"],
-		['pcb', 'object', 'Position on the board { x, y, rotation }'],
+		['pcb', 'object', 'Position on the board { x, y, rotation, side }'],
 		['text', 'array', 'Arbitrary text entries on the board, with property, text, position, styling'],
 		['fab', 'object', 'Fabrication layer text entry — a positioning object or [text, positioning] tuple'],
 		['referenceLayout', 'object', 'Reference designator text position and style (defaults to F.SilkS)'],
@@ -111,7 +111,7 @@ typecad-pcb search "SOIC-8" --footprint --json`;
 let j1 = new Connector({ number: 4 });            // 1x04 pin header (series presets: 'pin-header', 'JST-SH')
 let tp1 = new TestPoint();                        // 1.0 mm pad probe point
 let mh1 = new MountingHole({ size: 'M3' });       // M2–M8 presets
-let tie1 = new NetTie({ net1: 'VBUS', net2: 'VOUT' });  // ties two nets, pin count follows the nets`}/>
+let tie1 = new NetTie({ schematic: pcb.schematic, net1: vbus_pin, net2: vout_pin });  // ties two nets (Pins), pin count follows the nets`}/>
 	</div>
 </div>
 

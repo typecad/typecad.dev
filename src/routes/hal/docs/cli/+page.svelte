@@ -17,6 +17,7 @@
 		['typecad-hal trace capture | report | view', 'Runtime trace: record the board, summarize it, serve the live timeline'],
 		['typecad-hal library search | install | init | validate', 'The library-package catalog'],
 		['typecad-hal query', 'Ask the board module questions'],
+		['typecad-hal skills list | get | search | export', 'The API-pattern catalog — --out defaults to .claude/skills for export'],
 		['typecad-hal gen-decls', 'Generate .d.ts from C++ headers'],
 		['typecad-hal clean', 'Remove generated output'],
 		['typecad-hal debug-server start | stop', 'Drive the west GDB server for debugging']
@@ -55,7 +56,9 @@
 		['--autosar-arxml', 'Emit the deviation file for ARXML consumers'],
 		['--strict-css', 'UI CSS warnings become errors'],
 		['--emit cpp | split', 'Single file or per-source split (default split)'],
-		['--emit-maps / --build-target / --framework', 'Source maps, target override, framework override']
+		['--strict-subset', 'Constructs outside the language contract (*-unsupported, TS2CPP_UNHANDLED_HAL, TS2CPP_APPROXIMATE) become errors'],
+		['--emit-maps / --build-target / --framework', 'Source maps, target override, framework override'],
+		['--target <platform>', 'Target platform string (default generic) — the loaded framework registers its own id']
 	];
 
 	const dailyLoop = `typecad-hal create my-project --target xiao_ble/nrf52840

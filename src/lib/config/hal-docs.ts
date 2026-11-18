@@ -141,6 +141,11 @@ export const HAL_DOC_GROUPS: HalDocGroup[] = [
 				blurb: 'Ownership annotations — moves, borrows, and the C++ memory each one lowers to'
 			},
 			{
+				slug: 'safety',
+				title: 'Safety',
+				blurb: 'Voted I/O, SafeVariable, SafeInt, and ASIL-graded checks'
+			},
+			{
 				slug: 'transpiler',
 				title: 'The Transpiler',
 				blurb: 'TypeScript → C++: type mapping, rawCpp, what gets erased and promoted'
@@ -189,11 +194,6 @@ export const HAL_DOC_GROUPS: HalDocGroup[] = [
 				slug: 'simulation',
 				title: 'Hardware Simulation',
 				blurb: 'Run your logic against a simulated board — mock I2C/SPI devices included'
-			},
-			{
-				slug: 'safety',
-				title: 'Safety',
-				blurb: 'Voted I/O, SafeVariable, SafeInt, and ASIL-graded checks'
 			}
 		]
 	}

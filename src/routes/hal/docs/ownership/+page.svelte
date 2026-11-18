@@ -6,20 +6,33 @@
 
 	const ownedExample = `import { UART0 } from '@typecad/hal';
 
+function buildPacket(): number[] {
+  return [1, 2, 3];
+}
+
 let packet: Owned<number[]> = buildPacket();
 let archived = packet;   // ownership moves — 'packet' no longer has it
 
-UART0.writeLine(String(packet.length));
+UART0.writeLine(String(archived.length));
+
+// Uncomment this line to see the check fire:
+// UART0.writeLine(String(packet.length));
 // ✗ error: 'packet' was moved and cannot be used again`;
 
 	const sharedExample = `import { UART0 } from '@typecad/hal';
 
-const view: Shared<number[]> = readings;   // zero-copy, read-only
-const limit: Shared = config.threshold;    // primitives borrow by value
+const readings: number[] = [3, 1, 4, 1, 5];
+const filtered: number[] = [3, 4, 5];
+const threshold = 4;
 
-UART0.writeLine(String(view.length));      // reading is what it's for
+let view: Shared<number[]> = readings;   // zero-copy, read-only
+const limit: Shared = threshold;         // primitives borrow by value
 
-view = filtered;
+UART0.writeLine(String(view.length));    // reading is what it's for
+UART0.writeLine(String(limit));
+
+// Uncomment this line to see the check fire:
+// view = filtered;
 // ✗ error: Cannot assign to 'view' — it is an immutable borrow
 //   hint: change 'view: Shared<number[]>' → 'view: Mutable'`;
 
@@ -29,13 +42,31 @@ view = filtered;
   }
 }
 
+let samples: number[] = [2, 4, 6];
+
 scale(samples, 0.5);   // in place — no copy, nothing returned`;
 
-	const byValueExample = `function zero(reading: Reading) {   // no annotation — passed by value
+	const byValueExample = `interface Reading {
+  value: number;
+}
+
+function zero(reading: Reading) {   // no annotation — passed by value
   reading.value = 0;
   // ⚠ changes are invisible to the caller
   //   hint: use 'reading: Mutable<Reading>' to pass by reference (T&)
-}`;
+}
+
+const latest: Reading = { value: 42 };
+zero(latest);`;
+
+	const busExample = `import { I2C0 } from '@typecad/hal';
+
+const i2c = I2C0.take();
+
+const sensor = i2c.device(0x44);
+const reading = sensor.readReg(0x00);
+
+i2c.release();   // other code may take it now`;
 
 	const lowering = [
 		['(no annotation)', 'A private copy — every assignment copies', 'C++ value'],
@@ -144,14 +175,7 @@ scale(samples, 0.5);   // in place — no copy, nothing returned`;
 		I2C1, SPI0, SPI1, and UART0 are recognized."
 	imports={"const bus = I2C0.take()"}>
 	{#snippet example()}
-		<CodeBlock
-			code={`const i2c = I2C0.take();
-
-const sensor = i2c.device(0x44);
-const reading = sensor.readReg(0x00);
-
-i2c.release();   // other code may take it now`}
-			label="bus-ownership.ts" />
+		<CodeBlock code={busExample} label="bus-ownership.ts" />
 	{/snippet}
 	<p class="text-sm leading-relaxed">
 		Nothing is emitted — <code>take()</code> returns the same bus object; the ownership is a

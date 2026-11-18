@@ -41,7 +41,7 @@
 		['doctor', 'Verify the environment; --fix attempts automatic fixes'],
 		['validate', 'Check source code without a full build'],
 		['drc / erc', "Run the built-in design and electrical rule checks — --kicad for KiCad's own"],
-		['--json / --help / --version', 'Global options on every command']
+		['--json / --help / --version', 'Global options (--json on commands that report results)']
 	];
 </script>
 
@@ -65,7 +65,7 @@
 	kind="checklist"
 	purpose="Make sure your system has the required software. KiCAD and Node.js are the only hard
 		requirements; everything else is optional depending on how you work."
-	imports="KiCAD 10.0 · Node.js 20+">
+	imports="KiCAD 10.0 · Node.js 18+">
 	{#snippet example()}
 		<DocsTable headers={['Software', 'Notes', 'Link']} rows={requirements} linkCols={[2]} />
 	{/snippet}
@@ -143,7 +143,7 @@
 	name="⌨️ The CLI"
 	kind="reference"
 	purpose="All commands are accessed through the `typecad-pcb` binary that ships with `@typecad/pcb`.
-		Every command supports `--json` for machine-readable output, `--help` for usage, and `--version`."
+		Most commands support `--json` for machine-readable output; every command supports `--help`, and the binary supports `--version`."
 	imports={"typecad-pcb <command>"}>
 	{#snippet example()}
 		<DocsTable headers={['Command', 'What it does']} rows={cli} monoCols={[0]} />

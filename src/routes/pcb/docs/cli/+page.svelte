@@ -24,6 +24,10 @@
 		['skills', 'AI-assistant skill packs for coding with typeCAD'],
 		['package', 'Browse and install typeCAD packages from npm'],
 		['doctor', 'Verify the environment; --fix attempts automatic fixes'],
+		['simulate', 'Solve the operating point with ngspice for the board viewer — see Simulation'],
+		['lib add / list', 'Fetch KiCAD symbol libraries and footprints into ./build/lib — no KiCAD install needed'],
+		['viewer', 'Build the interactive board viewer page (gerbers, drill, and views in one pass)'],
+		['check-sync', 'Report drift between the built board and your source (the import oracle)'],
 		['clean', 'Remove generated build output']
 	];
 
@@ -38,6 +42,7 @@
 		['[entry]', 'Optional entry file override'],
 		['--watch, -w', 'Rebuild on file changes'],
 		['--outDir <dir>', 'Output directory (default ./build/)'],
+		['--typecheck', 'Run tsc --noEmit before building (the default build runs via tsx and does not type-check)'],
 		['--skip-erc / --skip-drc', "With --diagnostics: leave one check out of the report"],
 		['--diagnostics', 'Write a Markdown board report (--out=<file.md> names it)'],
 		['--verbose', 'Chatty output']
@@ -48,6 +53,8 @@
 		['--footprint_source=<kicad|local|jlcpcb>', 'Where the footprint comes from — can differ from the symbol source'],
 		['--symbol= / --footprint=', 'KiCAD library paths for --kicad'],
 		['--c=<C###>', 'JLCPCB part number for --jlcpcb'],
+		['--kicad= / --local= / --jlcpcb=', 'Legacy single-source form — one value for both symbol and footprint'],
+		['--value=<text>', 'Value (part number) for the generated component'],
 		['--folder=<path>', 'Output directory (default: current directory)']
 	];
 
@@ -62,14 +69,14 @@
 	const checkFlags = [
 		['erc / drc [path]', 'One check; the board/schematic is auto-detected from ./build/'],
 		['erc/drc --json', '{ passed, errors, warnings, ... } — exit code 1 on any failure'],
-		['check [entry]', 'build → unconnected → ERC → DRC, one report, non-zero exit on failure'],
-		['diagnostics [entry | .kicad_pcb]', 'Board report to --out=<file.md> (--skip-build, --skip-erc, --skip-drc)'],
+		['check [entry]', 'build → typecheck → unconnected → ERC → DRC, one report, non-zero exit on failure (--skip-typecheck / --skip-erc / --skip-drc, --kicad-erc / --kicad-drc)'],
+		['diagnostics [entry | .kicad_pcb]', 'Board report to --out=<file.md> (--skip-build, --skip-erc, --skip-drc, --kicad)'],
 		['doctor', 'Environment check — Node, config, kicad-cli, libraries, Git; --fix repairs, --json for CI'],
 		['validate [entry]', 'Type-check and execute the entry without generating files']
 	];
 
 	const automationFlags = [
-		['query summary|nets|net <name>|components|component <ref>|unconnected|power', 'Read a built board — --json for machines'],
+		['query summary|nets|net <name>|components|component <ref>|unconnected|power|routes|zones', 'Read a built board — --json for machines'],
 		['edit connect <a> <b> [...]', 'Add a connection — pins as R1.1, nets by name'],
 		['edit move <ref> --to x,y | --left-of <ref> [--gap mm]', 'Move a part — relative placement included'],
 		['edit route <from> <to> [--width mm] [--layers F.Cu,B.Cu]', 'Route a pair; --dry-run previews, --file targets a source file'],
@@ -93,7 +100,7 @@ typecad-pcb query unconnected --json`;
 <h1 class="mt-3 text-4xl font-bold tracking-tight">The CLI</h1>
 <p class="mt-3 leading-relaxed text-muted-foreground">
 	Everything ships through the <code>typecad-pcb</code> binary that comes with
-	<code>@typecad/pcb</code>. Every command takes <code>--json</code> for machine-readable output,
+	<code>@typecad/pcb</code>. Most commands take <code>--json</code> for machine-readable output (not <code>doc</code> or <code>diff</code>),
 	<code>--help</code> for usage, and <code>--version</code>. Flags accept
 	<code>--flag=value</code> or <code>--flag value</code>.
 </p>
