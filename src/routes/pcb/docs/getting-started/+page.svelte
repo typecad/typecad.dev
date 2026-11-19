@@ -14,8 +14,8 @@
 	const doctor = `npx @typecad/pcb doctor`;
 
 	const requirements = [
-		['KiCAD', 'version 10.0 — required for the part libraries and the final layout pass; the build, checks, and gerber export run without it', 'kicad.org'],
-		['npm / Node.js', 'version 18 or later — required', 'nodejs.org'],
+		['Node.js and npm', 'Required. Minimum Node.js version is 22.22.2.', 'nodejs.org'],
+		['KiCad', "Optional. Install it to edit the generated project in KiCad or use KiCad's own ERC, DRC, and Gerber export.", 'kicad.org'],
 		['Visual Studio Code', 'Not required, but highly recommended — new projects bundle the typeCAD/pcb extension (board viewer, pin hovers)', 'code.visualstudio.com'],
 		['typeCAD/hal', 'Optional — firmware projects scaffolded by create use it', 'typecad.dev/hal/docs'],
 		['git', 'Optional — used for version control features; keep git in your PATH', 'git-scm.com'],
@@ -55,17 +55,15 @@
 
 <h1 class="mt-3 text-4xl font-bold tracking-tight">🧰 Getting started</h1>
 <p class="mt-3 leading-relaxed text-muted-foreground">
-	typeCAD/pcb designs circuit boards in TypeScript: you write code, and the build produces a KiCAD
-	project — board, schematic, netlist, and BOM — that you open in KiCAD for the final visual layout
-	pass.
+	You design circuit boards in TypeScript, and typeCAD/pcb builds a KiCad project with a board,
+	schematic, netlist, and BOM. You can open the project in KiCad if you want to edit it there.
 </p>
 
 <ApiCard
 	name="🧰 Requirements"
 	kind="checklist"
-	purpose="Make sure your system has the required software. KiCAD and Node.js are the only hard
-		requirements; everything else is optional depending on how you work."
-	imports="KiCAD 10.0 · Node.js 18+">
+	purpose="You’ll need Node.js and npm. typeCAD/pcb builds the board, runs checks, and exports
+		Gerbers without KiCad. It downloads missing KiCad symbols and footprints as needed.">
 	{#snippet example()}
 		<DocsTable headers={['Software', 'Notes', 'Link']} rows={requirements} linkCols={[2]} />
 	{/snippet}
