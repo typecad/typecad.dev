@@ -1,0 +1,30 @@
+<script>
+  import { ui } from '@typecad/ui';
+  ui.mount(screen);
+</script>
+
+<style>
+  @import "@typecad/ui/themes/blue.css";
+
+  /* the packaged themes set --radius in rem, which border-radius can't read */
+  :root { --radius: 8px; }
+
+  screen { background: var(--background); padding: 10px; gap: 8px; }
+</style>
+
+<screen id="kit">
+  <view class="card">
+    <view class="card-header">
+      <text class="card-title">Sensor node</text>
+      <text class="card-description">living room</text>
+    </view>
+    <view class="card-content">
+      <view class="row">
+        <button class="btn btn-primary btn-sm">Pair</button>
+        <button class="btn btn-outline btn-sm">Forget</button>
+        <text class="badge badge-secondary">online</text>
+      </view>
+      <progress class="progress" value="62"></progress>
+    </view>
+  </view>
+</screen>

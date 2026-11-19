@@ -1,0 +1,34 @@
+<script>
+  import { ui } from '@typecad/ui';
+  ui.mount(screen);
+  screen.fan.value = 1;
+  export function save() {}
+</script>
+
+<style>
+  screen { padding: 12px; gap: 8px; }
+  .row { display: flex; flex-direction: row; gap: 14px; align-items: center; }
+  label { color: #555555; font-size: 13px; }
+</style>
+
+<screen id="forms">
+  <check id="fan">Fan enabled</check>
+  <view class="row">
+    <radio id="calm" name="speed" checked>Calm</radio>
+    <radio id="fast" name="speed">Fast</radio>
+  </view>
+  <select id="mode">
+    <option value="auto">Auto</option>
+    <option value="heat">Heat</option>
+    <option value="cool">Cool</option>
+  </select>
+  <label>Setpoint</label>
+  <range id="setpoint" min="15" max="30" value="21"></range>
+  <progress id="duty" value="40"></progress>
+  <label>Device name</label>
+  <input id="devName" type="text" placeholder="living-room" maxlength="20"/>
+  <view class="row">
+    <button id="save" on:click={save}>Save</button>
+    <button id="reset" disabled>Reset</button>
+  </view>
+</screen>

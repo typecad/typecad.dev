@@ -1,0 +1,28 @@
+<script>
+  import { ui } from '@typecad/ui';
+  ui.mount(screen);
+</script>
+
+<style>
+  screen { padding: 3px; gap: 3px; }
+  .row { display: flex; flex-direction: row; align-items: center; justify-content: space-between; }
+  .big { font-size: 16px; font-weight: bold; }
+  #duty { height: 8px; }
+  .mode { font-size: 11px; border: 1px solid #333333; padding: 1px 4px; }
+  .card {
+    font-size: 11px;
+    padding: 2px 4px;
+    border-radius: 6px;
+    background: linear-gradient(#ffd27a, #ff8a5c);
+    box-shadow: 2px 2px 0 #333333;
+  }
+</style>
+
+<screen id="panel">
+  <view class="row">
+    <text class="big">21.4 C</text>
+    <text class="mode">AUTO</text>
+  </view>
+  <text class="card">humidity 44 %</text>
+  <progress id="duty" value="40"></progress>
+</screen>

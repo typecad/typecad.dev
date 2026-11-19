@@ -1,0 +1,21 @@
+<script>
+  import { ui } from '@typecad/ui';
+  ui.mount(screen);
+</script>
+
+<style>
+  screen { padding: 12px; }
+  th { background: #e4e4e7; }
+  td { background: #fafafa; }
+</style>
+
+<screen id="readings">
+  <table>
+    <thead><tr><th>sensor</th><th>value</th></tr></thead>
+    <tbody>
+      <tr><td>temp</td><td>21.4 C</td></tr>
+      <tr><td>humidity</td><td>44 %</td></tr>
+      <tr><td>pressure</td><td>1012 hPa</td></tr>
+    </tbody>
+  </table>
+</screen>

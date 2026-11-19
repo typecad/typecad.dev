@@ -1,0 +1,22 @@
+<script>
+  import { ui } from '@typecad/ui';
+  ui.mount(screen);
+</script>
+
+<style>
+  screen { padding: 16px; gap: 12px; flex-direction: row; display: flex; align-items: center; justify-content: center; }
+  .btn-demo {
+    background: #3399ff;
+    color: #ffffff;
+    border: 1px solid #1a4f9c;
+    border-radius: 8px;
+    box-shadow: 3px 3px 0 #1a4f9c;
+    transition: background 120ms;
+  }
+  .btn-demo:pressed { background: #1a73e8; transform: translate(2px, 2px); }
+</style>
+
+<screen id="press">
+  <button id="idle" class="btn-demo">idle</button>
+  <button id="held" class="btn-demo">pressed</button>
+</screen>

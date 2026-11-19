@@ -1,0 +1,30 @@
+<script>
+  import { ui } from '@typecad/ui';
+  ui.mount(screen);
+</script>
+
+<style>
+  screen { padding: 12px; gap: 12px; background: #fafafa; }
+  .row { display: flex; flex-direction: row; gap: 12px; }
+  .box { width: 88px; height: 44px; justify-content: center; align-items: center; background: #ffffff; }
+  .box text { font-size: 13px; color: #18181b; }
+  .solid   { border: 2px solid #18181b; }
+  .dashed  { border: 2px dashed #3399ff; }
+  .round   { border: 1px solid #a1a1aa; border-radius: 12px; }
+  .shadow  { border: 1px solid #18181b; box-shadow: 4px 4px 0 #18181b; }
+  .outline { outline: 2px solid #9f7aea; }
+  .grad    { background: linear-gradient(#3399ff, #29d391); }
+</style>
+
+<screen id="boxes">
+  <view class="row">
+    <view class="box solid"><text>solid</text></view>
+    <view class="box dashed"><text>dashed</text></view>
+    <view class="box round"><text>radius 12</text></view>
+  </view>
+  <view class="row">
+    <view class="box shadow"><text>box-shadow</text></view>
+    <view class="box outline"><text>outline</text></view>
+    <view class="box grad"></view>
+  </view>
+</screen>

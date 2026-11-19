@@ -1,0 +1,23 @@
+<script>
+  import { ui } from '@typecad/ui';
+  ui.mount(screen);
+</script>
+
+<style>
+  /* the bundled faces are regular + bold; italic needs its own face */
+  @font-face { font-family: "Body"; src: url("node_modules/@typecad/ui/assets/fonts/dejavu/DejaVuSans.ttf"); font-weight: 400; }
+  @font-face { font-family: "Body"; src: url("node_modules/@typecad/ui/assets/fonts/dejavu/DejaVuSans-Bold.ttf"); font-weight: 700; }
+  @font-face { font-family: "Body"; src: url("node_modules/@typecad/ui/assets/fonts/dejavu/DejaVuSans-Oblique.ttf"); font-style: italic; }
+  screen { padding: 12px; gap: 6px; font-family: "Body"; }
+  a { color: #1a73e8; }
+</style>
+
+<screen id="home">
+  <p style="width: 290px">This is <b>bold</b>, <i>italic</i>, <u>underlined</u>, and <span style="color: #e5484d">red</span>, with a <a href="#home">link home</a>.<br/>A hard break, then more wrapping text.</p>
+  <ul>
+    <li>prefixed with a bullet</li>
+  </ul>
+  <ol>
+    <li>prefixed with a number</li>
+  </ol>
+</screen>

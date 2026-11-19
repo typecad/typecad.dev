@@ -1,0 +1,14 @@
+<script>
+  import { ui } from '@typecad/ui';
+  ui.mount(screen);
+</script>
+
+<style>
+  screen { padding: 12px; gap: 6px; }
+  label { color: #555555; font-size: 13px; }
+</style>
+
+<screen id="kb">
+  <label>Wi-Fi network</label>
+  <input id="ssid" type="text" placeholder="tap to type" maxlength="24"/>
+</screen>

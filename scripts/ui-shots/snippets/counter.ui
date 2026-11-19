@@ -1,0 +1,26 @@
+<script>
+  import { ui } from '@typecad/ui';
+
+  ui.mount(screen);
+
+  export const count = ui.signal(0);
+
+  export function incrementTaps() {
+    count.set(count() + 1);
+  }
+</script>
+
+<style>
+  screen { background: #ffffff; gap: 12px; padding: 16px; align-items: center; justify-content: center; }
+  #label { color: #333333; font-size: 18px; }
+  #tapBtn {
+    background: #3399ff;
+    border: 2px solid #1a73e8;
+    border-radius: 8px;
+  }
+</style>
+
+<screen id="counter">
+  <text id="label">taps: {count}</text>
+  <button id="tapBtn" on:click={incrementTaps}>tap me</button>
+</screen>

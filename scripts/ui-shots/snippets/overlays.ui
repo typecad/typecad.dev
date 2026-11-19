@@ -1,0 +1,47 @@
+<script>
+  import { ui } from '@typecad/ui';
+  ui.mount(screen);
+
+  export function openSheet()    { ui.drawer.open('sheet'); }
+  export function closeSheet()   { ui.drawer.close('sheet'); }
+  export function openConfirm()  { ui.dialog.open('confirm'); }
+  export function closeConfirm() { ui.dialog.close('confirm'); }
+  export function save()         { ui.toast('saved'); }
+</script>
+
+<style>
+  screen { padding: 12px; gap: 8px; }
+  .row { display: flex; flex-direction: row; gap: 8px; }
+  /* side= only picks the slide direction — position the panel yourself */
+  #sheet { position: absolute; left: 6px; right: 6px; bottom: 6px; }
+</style>
+
+<screen id="overlays">
+  <view class="row">
+    <button id="openBtn" class="btn btn-primary btn-sm" on:click={openSheet}>Options</button>
+    <button id="askBtn" class="btn btn-outline btn-sm" on:click={openConfirm}>Delete</button>
+    <button id="saveBtn" class="btn btn-secondary btn-sm" on:click={save}>Save</button>
+  </view>
+
+  <drawer id="sheet" side="bottom" class="card">
+    <text class="card-title">Options</text>
+    <text class="card-description">Slides in from the bottom edge.</text>
+    <button id="closeBtn" class="btn btn-outline btn-sm" on:click={closeSheet}>Close</button>
+  </drawer>
+
+  <dialog id="confirm">
+    <view id="scrim" class="dialog-scrim" on:click={closeConfirm}></view>
+    <view class="dialog-card">
+      <text class="card-title">Delete log?</text>
+      <text class="card-description">This can not be undone.</text>
+      <view class="dialog-footer">
+        <button id="cancel" class="btn btn-outline btn-sm" on:click={closeConfirm}>Cancel</button>
+        <button id="ok" class="btn btn-destructive btn-sm" on:click={closeConfirm}>Delete</button>
+      </view>
+    </view>
+  </dialog>
+
+  <toast id="saved" side="bottom" duration="2200" class="toast">
+    <text class="toast-title">Settings saved</text>
+  </toast>
+</screen>

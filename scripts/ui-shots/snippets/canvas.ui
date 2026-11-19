@@ -1,0 +1,26 @@
+<script>
+  import { ui } from '@typecad/ui';
+  ui.mount(screen);
+
+  const needleX = 140;
+  ui.drawCanvas(screen.spark, (ctx) => {
+    ctx.fillScreen('#0a0a1a');
+    ctx.hline(0, ctx.height / 2, ctx.width, '#2a4a6a');
+    ctx.line(0, 50, 40, 30, 'limegreen');
+    ctx.line(40, 30, 80, 38, 'limegreen');
+    ctx.line(80, 38, 120, 14, 'limegreen');
+    ctx.line(120, 14, 160, 22, 'limegreen');
+    ctx.line(160, 22, 200, 8, 'limegreen');
+    ctx.fillCircle(needleX, 20, 3, 'red');
+    ctx.roundRect(150, 40, 44, 16, 4, '#3399ff');
+    ctx.text(4, 4, 'temp', 'white');
+  });
+</script>
+
+<style>
+  screen { padding: 12px; align-items: center; justify-content: center; }
+</style>
+
+<screen id="media">
+  <canvas id="spark" width="200" height="60"></canvas>
+</screen>

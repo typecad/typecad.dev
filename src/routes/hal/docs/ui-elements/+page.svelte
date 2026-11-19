@@ -3,6 +3,7 @@
 	import Callout from '$lib/components/docs/callout.svelte';
 	import CodeBlock from '$lib/components/docs/code-block.svelte';
 	import DocsTable from '$lib/components/docs/docs-table.svelte';
+	import UiShot from '$lib/components/docs/ui-shot.svelte';
 
 	const native = [
 		['<screen>', 'A full-display root. A file can hold several, and the first one in the file shows at boot', 'ViewElement'],
@@ -44,7 +45,7 @@
 
 	const controls = [
 		['<button>', 'href', 'Taps fire on:click (under 600 ms) or on:hold (600 ms or longer)'],
-		['<check>', 'checked', 'Tap flips .value. Style the on state with check:checked'],
+		['<check>', '—', 'Tap flips .value. Style the on state with check:checked. The checked attribute is ignored today; set screen.<id>.value = 1 in script to start checked'],
 		['<radio>', 'name · value · checked', 'Same name = one group. checked picks the initial one'],
 		['<select>', '<option value>…</option> children', 'Only id, class, style, hidden, value and the options are read. ref, on:*, bind:* and disabled are dropped — use ui.bind on screen.<id>.value instead'],
 		['<range>', 'min · max · value', 'Default 0–100. Use screen.x.onChange(cb) or bind:value to react while dragging'],
@@ -179,6 +180,11 @@ ui.drawCanvas(screen.spark, (ctx) => {
   <text class="toast-title">Settings saved</text>
 </toast>
 
+<style>
+  /* side= picks the slide direction; where it rests is up to you */
+  #sheet { position: absolute; left: 6px; right: 6px; bottom: 6px; }
+</style>
+
 <script>
   export function openSheet()    { ui.drawer.open('sheet'); }
   export function closeSheet()   { ui.drawer.close('sheet'); }
@@ -187,8 +193,8 @@ ui.drawCanvas(screen.spark, (ctx) => {
 <\/script>`;
 
 	const overlays = [
-		['<drawer side="bottom|top|left|right">', 'ui.drawer.open(id) · ui.drawer.close(id)', 'Slides in from an edge. Closes on an outside tap and on navigation'],
-		['<dialog>', 'ui.dialog.open(id) · ui.dialog.close(id)', 'Centered. Add your own scrim view and close it from its on:click'],
+		['<drawer side="bottom|top|left|right">', 'ui.drawer.open(id) · ui.drawer.close(id)', 'Slides in from that edge to wherever layout put it, so give it position: absolute and pin it to the edge. Closes on an outside tap and on navigation'],
+		['<dialog>', 'ui.dialog.open(id) · ui.dialog.close(id)', 'Centered. Add your own scrim view and close it from its on:click. The kit\'s scrim is a solid near-black, since there\'s no alpha blending'],
 		['<toast side duration="ms">', 'ui.toast(id)', 'Shows, then dismisses itself. duration defaults to 2500, minimum 500'],
 	];
 
@@ -264,6 +270,7 @@ ui.drawCanvas(screen.spark, (ctx) => {
 	{#snippet example()}
 		<CodeBlock code={navExample} label="app.ui" />
 	{/snippet}
+	<UiShot shots={[{ src: '/hal/ui/navigation.png', alt: 'A settings screen: header with a Back link, then a scrolling column of items with a scrollbar on the right' }]} caption="the settings screen: header plus a .scrollBody taller than the display" />
 	<ul class="list-disc space-y-1 pl-5 text-sm leading-relaxed">
 		<li>The first <code>&lt;screen&gt;</code> in the file is the one that shows at boot.</li>
 		<li>
@@ -301,6 +308,7 @@ ui.drawCanvas(screen.spark, (ctx) => {
 	{#snippet example()}
 		<CodeBlock code={richText} label="app.ui" />
 	{/snippet}
+	<UiShot shots={[{ src: '/hal/ui/richtext.png', alt: 'A paragraph mixing bold, italic, underlined, red and link runs, then a bulleted and a numbered list item' }]} caption="italic here comes from an @font-face — the bundled faces are regular and bold" />
 	<ul class="list-disc space-y-1 pl-5 text-sm leading-relaxed">
 		<li>
 			Inline tags: <code>span</code>, <code>a</code>, <code>b</code>/<code>strong</code>,
@@ -333,6 +341,7 @@ ui.drawCanvas(screen.spark, (ctx) => {
 	{#snippet example()}
 		<CodeBlock code={formsExample} label="app.ui" />
 	{/snippet}
+	<UiShot shots={[{ src: '/hal/ui/forms.png', alt: 'Form controls: a checked checkbox, two radios, a select showing Auto, a slider, a progress bar, a text input, and Save / Reset buttons', label: 'default UA styles' }, { src: '/hal/ui/select-open.png', alt: 'The same form with the select open, listing Auto, Heat and Cool', label: 'after tapping the select' }]} caption="no stylesheet beyond a little spacing" />
 	<DocsTable headers={['Element', 'Attributes', 'Behavior']} rows={controls} monoCols={[0, 1]} />
 	<Callout>
 		<code>&lt;select&gt;</code>, <code>&lt;list&gt;</code>, and <code>&lt;input&gt;</code> need
@@ -350,6 +359,7 @@ ui.drawCanvas(screen.spark, (ctx) => {
 	{#snippet example()}
 		<CodeBlock code={keyboardExample} label="app.ui" />
 	{/snippet}
+	<UiShot shots={[{ src: '/hal/ui/keyboard.png', alt: 'The built-in alpha keyboard docked over the bottom of the screen after tapping an input' }]} caption="the built-in alpha keyboard, unstyled" />
 	<DocsTable headers={['Key attribute', 'Meaning']} rows={specialKeys} monoCols={[0]} />
 	<ul class="mt-3 list-disc space-y-1 pl-5 text-sm leading-relaxed">
 		<li>
@@ -378,6 +388,7 @@ ui.drawCanvas(screen.spark, (ctx) => {
 	{#snippet example()}
 		<CodeBlock code={listExample} label="app.ui" />
 	{/snippet}
+	<UiShot shots={[{ src: '/hal/ui/list.png', alt: 'A bordered list showing Entry 1 to Entry 8 with a scrollbar' }]} />
 	<p class="text-sm leading-relaxed">
 		<code>item-height</code> defaults to 24. The count function runs every tick, and a changed
 		count refreshes the list. Rows are single-line strings, capped at 32 characters like other
@@ -393,6 +404,7 @@ ui.drawCanvas(screen.spark, (ctx) => {
 	{#snippet example()}
 		<CodeBlock code={imgExample} label="app.ui" />
 	{/snippet}
+	<UiShot shots={[{ src: '/hal/ui/images.png', alt: 'An SVG badge whose transparent corners turned black, then one image three ways: fill, contain, and cover' }]} caption="an SVG with transparent corners (flattened onto black), then object-fit fill / contain / cover" />
 	<ul class="list-disc space-y-1 pl-5 text-sm leading-relaxed">
 		<li>PNG, JPEG, GIF, BMP, WebP, AVIF, TIFF, SVG, and ICO all work. Paths are relative to the UI file.</li>
 		<li>
@@ -423,6 +435,7 @@ ui.drawCanvas(screen.spark, (ctx) => {
 	{#snippet example()}
 		<CodeBlock code={canvasExample} label="app.ui" />
 	{/snippet}
+	<UiShot shots={[{ src: '/hal/ui/canvas.png', alt: 'A dark canvas with a green line graph, a red dot, a blue rounded rectangle and the label temp' }]} />
 	<DocsTable headers={['ctx member', 'What it draws']} rows={canvasMethods} monoCols={[0]} />
 	<p class="mt-3 text-sm leading-relaxed">
 		Coordinates are canvas-relative and clipped to the buffer. Color arguments are CSS color
@@ -441,6 +454,7 @@ ui.drawCanvas(screen.spark, (ctx) => {
 	{#snippet example()}
 		<CodeBlock code={overlayExample} label="app.ui" />
 	{/snippet}
+	<UiShot shots={[{ src: '/hal/ui/drawer.png', alt: 'A drawer card sitting at the bottom of the screen with a Close button', label: 'ui.drawer.open' }, { src: '/hal/ui/dialog.png', alt: 'A centered confirm dialog over a dark scrim', label: 'ui.dialog.open' }, { src: '/hal/ui/toast.png', alt: 'A dark toast reading Settings saved along the bottom edge', label: 'ui.toast' }]} />
 	<DocsTable headers={['Element', 'Script', 'Behavior']} rows={overlays} monoCols={[0, 1]} />
 	<Callout>
 		<code>ui.drawer</code>, <code>ui.dialog</code>, and <code>ui.toast</code> are handled by
@@ -458,6 +472,7 @@ ui.drawCanvas(screen.spark, (ctx) => {
 	{#snippet example()}
 		<CodeBlock code={tableExample} label="app.ui" />
 	{/snippet}
+	<UiShot shots={[{ src: '/hal/ui/table.png', alt: 'A two-column table with a grey header row: sensor and value' }]} />
 	<p class="text-sm leading-relaxed">
 		<code>colspan</code> and <code>rowspan</code> aren't supported
 		(<code>html-table-span-unsupported</code>). Give a cell a <code>flex</code> value if one

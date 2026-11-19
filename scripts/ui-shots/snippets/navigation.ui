@@ -1,0 +1,27 @@
+<script>
+  import { ui } from '@typecad/ui';
+  ui.mount(screen);
+</script>
+
+<style>
+  screen { padding: 8px; gap: 6px; background: #f4f4f5; }
+  .screenHeader { padding: 6px 8px; background: #ffffff; border: 1px solid #d4d4d8; border-radius: 6px; }
+  .scrollBody { align-items: stretch; }
+  .item { padding: 8px; background: #ffffff; border: 1px solid #d4d4d8; border-radius: 6px; }
+  a { color: #1a73e8; }
+</style>
+
+<screen id="settings">
+  <header class="screenHeader">
+    <a href="#settings">&lt; Back</a>
+    <h2>Settings</h2>
+  </header>
+  <main class="scrollBody">
+    <text class="item">Display brightness</text>
+    <text class="item">Wi-Fi</text>
+    <text class="item">Sensors</text>
+    <text class="item">Alarms</text>
+    <text class="item">Firmware</text>
+    <text class="item">About</text>
+  </main>
+</screen>

@@ -1,0 +1,27 @@
+<script>
+  import { ui } from '@typecad/ui';
+  ui.mount(screen);
+</script>
+
+<style>
+  /* the bundled faces are regular + bold; italic needs its own face */
+  @font-face { font-family: "Body"; src: url("node_modules/@typecad/ui/assets/fonts/dejavu/DejaVuSans.ttf"); font-weight: 400; }
+  @font-face { font-family: "Body"; src: url("node_modules/@typecad/ui/assets/fonts/dejavu/DejaVuSans-Bold.ttf"); font-weight: 700; }
+  @font-face { font-family: "Body"; src: url("node_modules/@typecad/ui/assets/fonts/dejavu/DejaVuSans-Oblique.ttf"); font-style: italic; }
+  screen { padding: 10px; gap: 2px; font-family: "Body"; }
+  h1 { margin: 0; }
+  h3 { margin: 0; color: #3399ff; }
+  .mono { font-family: "DejaVu Sans Mono"; font-size: 14px; }
+  .ell { width: 150px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+</style>
+
+<screen id="type">
+  <h1>Heading 1</h1>
+  <h3>Heading 3</h3>
+  <p>Regular, <b>bold</b>, and <i>italic</i> text.</p>
+  <p style="text-decoration: underline">underline</p>
+  <p style="text-transform: uppercase; letter-spacing: 2px">tracked capitals</p>
+  <p class="mono">DejaVu Sans Mono 0123</p>
+  <p class="ell">ellipsis cuts long text off here</p>
+  <p style="font-smoothing: none">font-smoothing: none</p>
+</screen>

@@ -3,6 +3,7 @@
 	import Callout from '$lib/components/docs/callout.svelte';
 	import CodeBlock from '$lib/components/docs/code-block.svelte';
 	import DocsTable from '$lib/components/docs/docs-table.svelte';
+	import UiShot from '$lib/components/docs/ui-shot.svelte';
 
 	const counterUi = `<script>
   import { ui } from '@typecad/ui';
@@ -133,6 +134,12 @@ screen.pumpBtn.onClick(() => {
 		function on a tap. The <code>screen</code> name is injected for you in a <code>.ui</code>
 		file: every element with an <code>id</code> is reachable as <code>screen.&lt;id&gt;</code>.
 	</p>
+	<UiShot
+		shots={[
+			{ src: '/hal/ui/counter.png', alt: 'The counter screen at boot: "taps: 0" above a blue "tap me" button', label: 'at boot' },
+			{ src: '/hal/ui/counter-tapped.png', alt: 'The same screen after three taps: "taps: 3"', label: 'after three taps' }
+		]}
+		caption="src/app.ui on a 320 px wide panel" />
 	<CodeBlock code={displayConfig} label="typecad-hal.config.ts" class="mt-3" />
 	<Callout label="Tip">
 		Run <code>npx @typecad/ui --config</code> inside a project and it'll ask which panel you

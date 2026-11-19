@@ -3,6 +3,7 @@
 	import Callout from '$lib/components/docs/callout.svelte';
 	import CodeBlock from '$lib/components/docs/code-block.svelte';
 	import DocsTable from '$lib/components/docs/docs-table.svelte';
+	import UiShot from '$lib/components/docs/ui-shot.svelte';
 
 	const order = [
 		['1. UA defaults', 'Built-in sizes for headings, buttons, inputs… scaled to the display height (16 px root at ≥300 px tall, 14 px at ≥150, 12 px below)'],
@@ -255,6 +256,9 @@ screen { font-family: "Inter"; }
 		<code>:pressed</code> you can change background, color, and position
 		(<code>top</code>/<code>left</code> or <code>transform</code>) for a press-down effect.
 	</Callout>
+	<UiShot
+		shots={[{ src: '/hal/ui/pressed.png', alt: 'Two identical buttons; the right one is held down, darker and shifted 2 px onto its shadow' }]}
+		caption=".btn-demo:pressed {'{'} background: #1a73e8; transform: translate(2px, 2px); {'}'} — right button held" />
 </ApiCard>
 
 <ApiCard
@@ -280,6 +284,9 @@ screen { font-family: "Inter"; }
 .grow { flex: 1; }
 .badge-corner { position: absolute; right: 4px; top: 4px; z-index: 2; }`}
 		label="style" />
+	<UiShot
+		shots={[{ src: '/hal/ui/layout.png', alt: 'Three rows: A, a wide green flex:1 box, C; then A B C spread with space-between; then an absolutely positioned red z:2 badge in a corner over a yellow box' }]}
+		caption="flex: 1, justify-content: space-between, and position: absolute with z-index" />
 	<Callout>
 		<code>flex-direction</code> only applies when the same element is
 		<code>display: flex</code>. Views already are. A <code>&lt;p&gt;</code>,
@@ -296,6 +303,9 @@ screen { font-family: "Inter"; }
 	{#snippet example()}
 		<DocsTable headers={['Property', 'Values / notes']} rows={boxProps} monoCols={[0]} />
 	{/snippet}
+	<UiShot
+		shots={[{ src: '/hal/ui/boxes.png', alt: 'Six boxes: solid border, dashed border, 12 px radius, offset box-shadow, outline, and a vertical gradient' }]}
+		caption="border, border-radius, box-shadow, outline, linear-gradient" />
 </ApiCard>
 
 <ApiCard
@@ -313,6 +323,12 @@ screen { font-family: "Inter"; }
 		<code>css-alpha-ignored</code>. The exceptions are box and text shadows, and
 		<code>opacity</code>, which is applied when the node is drawn.
 	</p>
+	<Callout>
+		Two-stop gradients currently draw in reverse: <code>linear-gradient(#3399ff, #29d391)</code>
+		comes out green at the top and blue at the bottom, on the device and in the preview. The
+		boxes image above shows it. Swap your stops until the fix lands. And put text next to a
+		gradient rather than on it, because a text node paints a solid box behind its glyphs.
+	</Callout>
 </ApiCard>
 
 <ApiCard
@@ -323,12 +339,17 @@ screen { font-family: "Inter"; }
 	{#snippet example()}
 		<DocsTable headers={['Property', 'Values / notes']} rows={textProps} monoCols={[0]} />
 	{/snippet}
+	<UiShot
+		shots={[{ src: '/hal/ui/text.png', alt: 'Headings, regular bold and italic runs, underline, tracked uppercase, DejaVu Sans Mono, an ellipsis, and aliased text' }]}
+		caption="headings, weights, decoration, transform, the bundled mono face, ellipsis, font-smoothing: none" />
 	<CodeBlock code={fontFace} label="style" class="mt-3" />
 	<ul class="mt-3 list-disc space-y-1 pl-5 text-sm leading-relaxed">
 		<li>
 			<code>src</code> is a local TTF/OTF path, relative to the stylesheet. Remote URLs are an
 			error. Faces match by family name, then style, then the closest weight. No face means no
-			bold. It doesn't fake it.
+			bold or italic. It doesn't fake either. The bundled DejaVu faces are regular and bold only,
+			so <code>&lt;i&gt;</code> and <code>font-style: italic</code> need an italic
+			<code>@font-face</code> to look any different.
 		</li>
 		<li>
 			<strong>Subsetting.</strong> By default only the characters in your static text,
@@ -399,6 +420,12 @@ screen { font-family: "Inter"; }
 		different stylesheet in place of the sibling <code>.ui.css</code>, which is handy for
 		trying looks without touching markup.
 	</p>
+	<UiShot
+		shots={[
+			{ src: '/hal/ui/theme.png', alt: 'A kit card in the blue theme, light: white card, blue Pair button', label: 'blue.css' },
+			{ src: '/hal/ui/theme-dark.png', alt: 'The same card in the blue theme, dark: near-black card, blue Pair button', label: "blue.css + themeClass: 'dark'" }
+		]}
+		caption="the card markup below, with the blue theme imported" />
 	<div class="mt-3"><DocsTable headers={['Group', 'Classes']} rows={kit} monoCols={[1]} /></div>
 	<CodeBlock
 		code={`<view class="card">
@@ -416,6 +443,9 @@ screen { font-family: "Inter"; }
 </view>`}
 		label="app.ui"
 		class="mt-3" />
+	<UiShot
+		shots={[{ src: '/hal/ui/kit.png', alt: 'The kit with no theme: a card with Pair, Forget and an online badge, a progress bar, and a red Battery low alert' }]}
+		caption="the kit's own tokens, no theme imported, plus an .alert-destructive" />
 </ApiCard>
 
 <ApiCard
@@ -426,6 +456,12 @@ screen { font-family: "Inter"; }
 	{#snippet example()}
 		<DocsTable headers={['Panel', 'What happens to your CSS']} rows={displayKinds} monoCols={[0]} />
 	{/snippet}
+	<UiShot
+		shots={[
+			{ src: '/hal/ui/panel.png', width: 256, alt: 'A 128×64 readout on a color panel: antialiased text, an orange gradient card with rounded corners and a shadow', label: 'rgb565, 128×64' },
+			{ src: '/hal/ui/panel-mono.png', width: 256, alt: 'The same readout on a 1-bit panel: stock bitmap font, no gradient, radius or shadow', label: 'mono, 128×64' }
+		]}
+		caption="one stylesheet, two panels: the 1-bit build drops the gradient, radius, and shadow and uses the stock font" />
 </ApiCard>
 
 <ApiCard

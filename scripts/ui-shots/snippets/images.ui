@@ -1,0 +1,25 @@
+<script>
+  import { ui } from '@typecad/ui';
+  ui.mount(screen);
+</script>
+
+<style>
+  screen { padding: 12px; gap: 10px; }
+  .row { display: flex; flex-direction: row; gap: 10px; align-items: center; }
+  .frame { width: 80px; height: 50px; border: 1px solid #a1a1aa; background: #f4f4f5; }
+  .cap { width: 80px; font-size: 12px; color: #555555; text-align: center; }
+</style>
+
+<screen id="media">
+  <img id="logo" src="assets/badge.svg"></img>
+  <view class="row">
+    <img id="fill" class="frame" src="assets/stripes.svg" style="object-fit: fill"></img>
+    <img id="contain" class="frame" src="assets/stripes.svg" style="object-fit: contain"></img>
+    <img id="cover" class="frame" src="assets/stripes.svg" style="object-fit: cover"></img>
+  </view>
+  <view class="row">
+    <text class="cap">fill</text>
+    <text class="cap">contain</text>
+    <text class="cap">cover</text>
+  </view>
+</screen>

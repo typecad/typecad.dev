@@ -1,0 +1,33 @@
+<script>
+  import { ui } from '@typecad/ui';
+  ui.mount(screen);
+</script>
+
+<style>
+  screen { padding: 10px; gap: 8px; background: #fafafa; }
+  .row { display: flex; flex-direction: row; gap: 8px; align-items: center; padding: 6px; background: #e4e4e7; }
+  .chip { width: 40px; height: 28px; background: #3399ff; justify-content: center; align-items: center; }
+  .chip text { color: #ffffff; font-size: 13px; }
+  .grow { flex: 1; background: #29d391; }
+  .between { justify-content: space-between; }
+  .stage { position: relative; height: 56px; background: #e4e4e7; }
+  .badge-corner { position: absolute; right: 4px; top: 4px; z-index: 2; width: 56px; height: 22px; background: #e5484d; justify-content: center; align-items: center; }
+  .under { position: absolute; left: 8px; top: 12px; width: 120px; height: 34px; background: #f6c84c; }
+</style>
+
+<screen id="flex">
+  <view class="row">
+    <view class="chip"><text>A</text></view>
+    <view class="chip grow"><text>flex: 1</text></view>
+    <view class="chip"><text>C</text></view>
+  </view>
+  <view class="row between">
+    <view class="chip"><text>A</text></view>
+    <view class="chip"><text>B</text></view>
+    <view class="chip"><text>C</text></view>
+  </view>
+  <view class="stage">
+    <view class="under"></view>
+    <view class="badge-corner"><text>z: 2</text></view>
+  </view>
+</screen>
