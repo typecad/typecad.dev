@@ -123,7 +123,22 @@ export const HAL_DOC_GROUPS: HalDocGroup[] = [
 			{
 				slug: 'ui',
 				title: 'UI',
-				blurb: 'Display screens authored in HTML + CSS, compiled to draw calls'
+				blurb: 'Display screens authored in HTML + CSS, compiled to a C++ node table — start here'
+			},
+			{
+				slug: 'ui-elements',
+				title: 'UI Elements',
+				blurb: 'Every tag and attribute: controls, lists, images, canvas, keyboards, overlays, screens'
+			},
+			{
+				slug: 'ui-reactivity',
+				title: 'UI Reactivity & Events',
+				blurb: 'Signals, {expr}, on: and bind:, ui.bind, element handles, GPIO buttons, awaitable taps'
+			},
+			{
+				slug: 'ui-styling',
+				title: 'UI Styling',
+				blurb: 'The CSS subset: selectors, units, flexbox, fonts, animation, themes, the shadcn kit'
 			},
 			{
 				slug: 'displays',
