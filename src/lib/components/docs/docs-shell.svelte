@@ -3,6 +3,9 @@
 	import { page } from '$app/state';
 	import { buttonVariants } from '$lib/components/ui/button/index.js';
 	import { cn } from '$lib/utils';
+	import { fade, fly } from 'svelte/transition';
+	import Menu from '@lucide/svelte/icons/menu';
+	import X from '@lucide/svelte/icons/x';
 
 	interface DocsArea {
 		slug: string;
@@ -47,6 +50,18 @@
 	const index = $derived(area ? areas.indexOf(area) : -1);
 	const prev = $derived(index > 0 ? areas[index - 1] : undefined);
 	const next = $derived(index >= 0 && index < areas.length - 1 ? areas[index + 1] : undefined);
+
+	// --- mobile nav drawer (the sidebar is desktop-only) ---
+	let navOpen = $state(false);
+
+	$effect(() => {
+		if (!navOpen) return;
+		const prevOverflow = document.body.style.overflow;
+		document.body.style.overflow = 'hidden';
+		return () => {
+			document.body.style.overflow = prevOverflow;
+		};
+	});
 
 	// --- search deep-link: ?q= scrolls to and highlights the first match ---
 	let contentEl: HTMLElement | null = $state(null);
@@ -95,6 +110,7 @@
 	}
 
 	afterNavigate((navigation) => {
+		navOpen = false;
 		const q = navigation.to?.url.searchParams.get('q');
 		if (q) {
 			// the new page renders before afterNavigate resolves; one frame for safety
@@ -126,59 +142,114 @@
 	}
 </style>
 
+{#snippet navLinks()}
+		<p
+			class="text-xs font-bold uppercase tracking-widest text-muted-foreground underline decoration-2 underline-offset-4">
+			{navTitle}
+		</p>
+		<nav class="mt-3 flex flex-col items-stretch gap-0.5">
+			<a
+				href={root}
+				class={cn(
+					'border-2 border-transparent px-2 py-1 text-sm transition-colors hover:border-foreground',
+					pathname === root ? 'border-foreground bg-muted font-bold' : ''
+				)}>
+				Overview
+			</a>
+		</nav>
+		{#each groups as group (group.title)}
+			<p
+				class="mt-4 px-2 text-xs font-bold uppercase tracking-widest text-muted-foreground underline decoration-2 underline-offset-4">
+				{group.title}
+			</p>
+			<nav class="mt-1 flex flex-col items-stretch gap-0.5">
+				{#each group.areas as a (a.slug)}
+					<a
+						href="{root}/{a.slug}"
+						class={cn(
+							'border-2 border-transparent px-2 py-1 text-sm transition-colors hover:border-foreground',
+							area?.slug === a.slug ? 'border-foreground bg-muted font-bold' : ''
+						)}>
+						{a.title}
+					</a>
+				{/each}
+			</nav>
+		{/each}
+		{#if extras.length}
+			<p
+				class="mt-4 px-2 text-xs font-bold uppercase tracking-widest text-muted-foreground underline decoration-2 underline-offset-4">
+				More
+			</p>
+			<nav class="mt-1 flex flex-col items-stretch gap-0.5">
+				{#each extras as e (e.slug)}
+					<a
+						href={e.href}
+						class="border-2 border-transparent px-2 py-1 text-sm transition-colors hover:border-foreground">
+						{e.title}
+					</a>
+				{/each}
+			</nav>
+		{/if}
+{/snippet}
+
+<svelte:window
+	onkeydown={(e) => {
+		if (navOpen && e.key === 'Escape') navOpen = false;
+	}} />
+
 <section class="{theme} flex flex-1 flex-col bg-background text-foreground">
+	<!-- mobile: the sidebar is hidden below lg, so expose it through a drawer -->
+	<div class="sticky top-14 z-40 border-b-2 border-foreground bg-background lg:hidden">
+		<div class="mx-auto flex h-11 max-w-6xl items-center px-6">
+			<button
+				type="button"
+				class="-ml-2 flex min-w-0 items-center gap-2 border-2 border-transparent px-2 py-1 text-sm font-medium transition-colors hover:border-foreground"
+				aria-label="Open docs menu"
+				aria-expanded={navOpen}
+				aria-controls="docs-mobile-nav"
+				onclick={() => (navOpen = true)}>
+				<Menu class="size-5 shrink-0" />
+				<span class="truncate">
+					{navTitle}{#if area}<span class="text-muted-foreground"> / {area.title}</span>{/if}
+				</span>
+			</button>
+		</div>
+	</div>
+
+	{#if navOpen}
+		<div
+			class="fixed inset-0 z-[60] bg-black/50 lg:hidden"
+			transition:fade={{ duration: 150 }}
+			onclick={() => (navOpen = false)}
+			aria-hidden="true">
+		</div>
+		<div
+			id="docs-mobile-nav"
+			role="dialog"
+			aria-modal="true"
+			aria-label={navTitle}
+			class="docs-nav fixed inset-y-0 left-0 z-[61] w-72 max-w-[85vw] overflow-y-auto overscroll-contain border-r-2 border-foreground bg-background px-4 pb-8 pt-4 lg:hidden"
+			transition:fly={{ x: -320, duration: 200 }}>
+			<div class="mb-3 flex items-center justify-between">
+				<a href="/{rootLabel}" class="text-sm font-bold">typeCAD/{rootLabel}</a>
+				<button
+					type="button"
+					class="border-2 border-transparent p-1 transition-colors hover:border-foreground"
+					aria-label="Close docs menu"
+					onclick={() => (navOpen = false)}>
+					<X class="size-5" />
+				</button>
+			</div>
+			{@render navLinks()}
+		</div>
+	{/if}
+
 	<div
 		class="mx-auto grid w-full max-w-6xl flex-1 grid-cols-1 gap-10 px-6 py-10 lg:grid-cols-[220px_minmax(0,1fr)]">
 		<aside class="hidden lg:block">
 			<div
 				class="docs-nav sticky top-20 max-h-[calc(100vh-6.5rem)] overflow-y-auto overscroll-contain pb-4 pr-1">
-				<p
-					class="text-xs font-bold uppercase tracking-widest text-muted-foreground underline decoration-2 underline-offset-4">
-					{navTitle}
-				</p>
-				<nav class="mt-3 flex flex-col items-stretch gap-0.5">
-					<a
-						href={root}
-						class={cn(
-							'border-2 border-transparent px-2 py-1 text-sm transition-colors hover:border-foreground',
-							pathname === root ? 'border-foreground bg-muted font-bold' : ''
-						)}>
-						Overview
-					</a>
-				</nav>
-				{#each groups as group (group.title)}
-					<p
-						class="mt-4 px-2 text-xs font-bold uppercase tracking-widest text-muted-foreground underline decoration-2 underline-offset-4">
-						{group.title}
-					</p>
-					<nav class="mt-1 flex flex-col items-stretch gap-0.5">
-						{#each group.areas as a (a.slug)}
-							<a
-								href="{root}/{a.slug}"
-								class={cn(
-									'border-2 border-transparent px-2 py-1 text-sm transition-colors hover:border-foreground',
-									area?.slug === a.slug ? 'border-foreground bg-muted font-bold' : ''
-								)}>
-								{a.title}
-							</a>
-						{/each}
-					</nav>
-				{/each}
-				{#if extras.length}
-					<p
-						class="mt-4 px-2 text-xs font-bold uppercase tracking-widest text-muted-foreground underline decoration-2 underline-offset-4">
-						More
-					</p>
-					<nav class="mt-1 flex flex-col items-stretch gap-0.5">
-						{#each extras as e (e.slug)}
-							<a
-								href={e.href}
-								class="border-2 border-transparent px-2 py-1 text-sm transition-colors hover:border-foreground">
-								{e.title}
-							</a>
-						{/each}
-					</nav>
-				{/if}
+				{@render navLinks()}
 			</div>
 		</aside>
 
